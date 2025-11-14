@@ -88,8 +88,8 @@ export async function registerAgentRoutes(app: FastifyInstance) {
     const result = await agentsClient.executeAgent({
       goal,
       agentId,
-      listenIn,
-      claims,
+      listenInMode: listenIn,
+      context: { claims },
     });
 
     return result;

@@ -433,7 +433,7 @@ if (config.security.jwtSecret.length < 32) {
 console.log('✅ Configuration loaded successfully:');
 console.log(`   Environment: ${config.server.nodeEnv}`);
 console.log(`   Port: ${config.server.port}`);
-console.log(`   CORS Origins: ${isDev ? '*' : config.security.corsOrigins.join(', ')}`);
+console.log(`   CORS Origins: ${isDev ? '*' : Array.isArray(config.security.corsOrigins) ? config.security.corsOrigins.join(', ') : config.security.corsOrigins}`);
 console.log(`   Agents Runtime: ${config.services.agentsRuntimeUrl}`);
 console.log(`   Midnight Gateway: ${config.services.midnightGatewayUrl}`);
 console.log(`   TTS Service: ${config.services.ttsServiceUrl}`);

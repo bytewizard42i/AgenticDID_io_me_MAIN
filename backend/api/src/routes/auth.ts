@@ -207,7 +207,11 @@ export async function registerAuthRoutes(app: FastifyInstance) {
     }
 
     // Verify VP via Midnight Gateway
-    const verificationResult = await midnightClient.verifyPresentation(vp, challenge);
+    const verificationResult = await midnightClient.verifyPresentation({
+      presentation: vp as Record<string, unknown>,
+      challenge: challenge_nonce,
+      agentType: 'agent', // Could be extracted from VP if needed
+    });
 
     if (!verificationResult.valid) {
       app.log.warn(
@@ -219,6 +223,11 @@ export async function registerAuthRoutes(app: FastifyInstance) {
     }
 
     // Generate capability token
+    if (!verificationResult.pid) {
+      reply.status(403);
+      return { error: 'Verification result missing pid' };
+    }
+
     const tokenPayload = {
       pid: verificationResult.pid,
       audience: challenge.aud,

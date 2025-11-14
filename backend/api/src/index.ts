@@ -429,7 +429,7 @@ try {
   console.log(`\n✅ Server started successfully!\n`);
   console.log(`📍 API Gateway:      http://localhost:${config.server.port}`);
   console.log(`🌐 Environment:      ${config.server.nodeEnv}`);
-  console.log(`🔗 CORS Origins:     ${isDev ? '*' : config.security.corsOrigins.join(', ')}`);
+  console.log(`🔗 CORS Origins:     ${isDev ? '*' : Array.isArray(config.security.corsOrigins) ? config.security.corsOrigins.join(', ') : config.security.corsOrigins}`);
   console.log(`\n📡 Dependent Services:`);
   console.log(`   🤖 Agents Runtime: ${config.services.agentsRuntimeUrl}`);
   console.log(`   🌙 Midnight Gateway: ${config.services.midnightGatewayUrl}`);
