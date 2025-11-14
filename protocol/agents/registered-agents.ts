@@ -17,6 +17,7 @@ import {
   HOSPITAL_ISSUER_DID,
   DOCTORS_OFFICE_ISSUER_DID,
   IVF_CENTER_ISSUER_DID,
+  STANFORD_ISSUER_DID,
 } from '../issuers/index.js';
 
 export interface RegisteredAgentConfig {
@@ -239,6 +240,46 @@ export const MEDICAL_AGENT_CONFIG: RegisteredAgentConfig = {
 };
 
 /**
+ * STANFORD AGENT
+ * 
+ * Multi-domain academic agent - INACTIVE
+ */
+export const STANFORD_AGENT_CONFIG: RegisteredAgentConfig = {
+  agentDid: 'did:agentic:stanford_agent',
+  agentId: 'stanford_agent',
+  agentHumanName: 'Stanford Agent',
+  role: 'TASK_AGENT',
+  parentIssuerDid: STANFORD_ISSUER_DID,
+  description: 'Multi-domain agent for Stanford University. Handles student records, research credentials, and medical services from Stanford Medicine.',
+  capabilities: [
+    // Educational
+    'view_transcript',
+    'degree_verification',
+    'enrollment_status',
+    'course_registration',
+    
+    // Research
+    'publication_access',
+    'research_grants',
+    'lab_access',
+    
+    // Medical (Stanford Medicine)
+    'view_medical_records',
+    'book_appointment',
+    'prescription_refill',
+    'lab_results',
+  ],
+  requiredCredentials: ['KYC_TIER_1', 'IDENTITY_VERIFIED'],
+  isSystemAgent: false,
+  isActive: false,  // ❌ OFF until Stanford issuer implemented
+  metadata: {
+    icon: '🎓',
+    color: '#8C1515',  // Stanford Cardinal red
+    category: 'academic',
+  },
+};
+
+/**
  * All Registered Agents
  */
 export const ALL_REGISTERED_AGENTS = [
@@ -249,6 +290,7 @@ export const ALL_REGISTERED_AGENTS = [
   AIRLINE_AGENT_CONFIG,         // ❌ OFF
   VOTING_AGENT_CONFIG,          // ❌ OFF
   MEDICAL_AGENT_CONFIG,         // ❌ OFF
+  STANFORD_AGENT_CONFIG,        // ❌ OFF
 ] as const;
 
 export const ACTIVE_AGENTS = ALL_REGISTERED_AGENTS.filter(agent => agent.isActive);

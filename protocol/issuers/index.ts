@@ -16,6 +16,7 @@ export { ECUADORIAN_VOTING_ISSUER_CONFIG, ECUADORIAN_VOTING_ISSUER_DID } from '.
 export { HOSPITAL_ISSUER_CONFIG, HOSPITAL_ISSUER_DID } from './hospital-issuer.js';
 export { DOCTORS_OFFICE_ISSUER_CONFIG, DOCTORS_OFFICE_ISSUER_DID } from './doctors-office-issuer.js';
 export { IVF_CENTER_ISSUER_CONFIG, IVF_CENTER_ISSUER_DID } from './ivf-center-issuer.js';
+export { STANFORD_ISSUER_CONFIG, STANFORD_ISSUER_DID } from './stanford-issuer.js';
 
 /**
  * All issuers registry
@@ -30,6 +31,7 @@ import { ECUADORIAN_VOTING_ISSUER_CONFIG } from './ecuadorian-voting-issuer.js';
 import { HOSPITAL_ISSUER_CONFIG } from './hospital-issuer.js';
 import { DOCTORS_OFFICE_ISSUER_CONFIG } from './doctors-office-issuer.js';
 import { IVF_CENTER_ISSUER_CONFIG } from './ivf-center-issuer.js';
+import { STANFORD_ISSUER_CONFIG } from './stanford-issuer.js';
 
 export const ALL_ISSUERS = [
   TRUSTED_ISSUER_0_CONFIG,       // ACTIVE
@@ -40,6 +42,7 @@ export const ALL_ISSUERS = [
   HOSPITAL_ISSUER_CONFIG,         // INACTIVE
   DOCTORS_OFFICE_ISSUER_CONFIG,   // INACTIVE
   IVF_CENTER_ISSUER_CONFIG,       // INACTIVE
+  STANFORD_ISSUER_CONFIG,         // INACTIVE
 ] as const;
 
 export const ACTIVE_ISSUERS = ALL_ISSUERS.filter(issuer => issuer.isActive);
