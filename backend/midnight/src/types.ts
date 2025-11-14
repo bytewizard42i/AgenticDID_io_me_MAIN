@@ -9,29 +9,48 @@
  */
 
 /**
- * Issuer Category
+ * THREE-AXIS ISSUER MODEL
  * 
- * Defines the type of credential issuer.
- * Each category has different onboarding requirements and allowed credential types.
+ * Issuers are characterized by three independent dimensions:
  * 
- * Categories:
- * - SELF_SOVEREIGN: Individual or personal DID
- *   - Allowed: preference credentials, low-risk attestations
- *   - Not allowed: KYC, government identity, major brand identities
+ * 1. IssuerType: Legal form and accountability structure
+ * 2. IssuerDomain: Sector(s) they operate in (can be multiple)
+ * 3. AssuranceLevel: Strength of verification and trust
  * 
- * - CORPORATION: Verified business or brand (Amazon, Coinbase, Bank of America)
- *   - Allowed: brand-linked credentials, financial credentials
- *   - Requires: strong KYC, corporate verification, possibly stake/bond
- * 
- * - GOVERNMENT_ENTITY: Official government issuer (DMV, passport office, voting center)
- *   - Allowed: legal identity, voting eligibility, residency proofs
- *   - Highest trust tier, tightest scope and governance
- * 
- * - INSTITUTION: Universities, hospitals, clinics, research institutes
- *   - Allowed: medical credentials, educational credentials, specialized trust
- *   - Requires: institutional verification and licensing
+ * This model cleanly handles overlapping entities:
+ * - Government hospital: GOV_ENTITY + MEDICAL + SYSTEM_CRITICAL
+ * - University medical center: INSTITUTION + MEDICAL + EDUCATION + REGULATED_ENTITY
+ * - Private hospital: CORPORATION + MEDICAL + REGULATED_ENTITY
+ * - Health insurance: CORPORATION + FINANCIAL + MEDICAL + REGULATED_ENTITY
  */
-export enum IssuerCategory {
+
+/**
+ * Issuer Type (Axis 1: Legal Form)
+ * 
+ * Defines the legal structure and accountability model.
+ * 
+ * Types:
+ * - SELF_SOVEREIGN: Individual or personal DID
+ *   - No corporate structure
+ *   - Personal accountability only
+ *   - Can issue low-risk attestations
+ * 
+ * - CORPORATION: Registered business entity (LLC, Inc, etc.)
+ *   - Corporate legal structure
+ *   - Business KYC required
+ *   - Can operate in any sector (financial, medical, e-commerce, etc.)
+ * 
+ * - GOVERNMENT_ENTITY: Official government organization
+ *   - Government authority backing
+ *   - Highest legal accountability
+ *   - Can issue sovereign identity credentials
+ * 
+ * - INSTITUTION: Non-profit, educational, or research organization
+ *   - Institutional structure (university, research institute, NGO)
+ *   - Academic or public service mission
+ *   - Often regulated but non-commercial
+ */
+export enum IssuerType {
   SELF_SOVEREIGN = 'SELF_SOVEREIGN',
   CORPORATION = 'CORPORATION',
   GOVERNMENT_ENTITY = 'GOVERNMENT_ENTITY',
@@ -39,23 +58,89 @@ export enum IssuerCategory {
 }
 
 /**
- * Verification Level
+ * Issuer Domain (Axis 2: Sector/Activity)
  * 
- * Indicates the strength of issuer verification/onboarding.
- * Higher levels required for sensitive credential types.
+ * Defines what sector(s) the issuer operates in.
+ * An issuer can have MULTIPLE domains.
+ * 
+ * Domains:
+ * - GENERAL: Default for self-sovereign or non-specialized issuers
+ * - IDENTITY_INFRA: Core identity and DID infrastructure (AgenticDID, etc.)
+ * - FINANCIAL: Banking, payments, investments, credit
+ * - CRYPTO_EXCHANGE: Cryptocurrency exchange specifically
+ * - MEDICAL: Healthcare, hospitals, clinics, medical records
+ * - EDUCATION: Universities, schools, educational credentials
+ * - RESEARCH: Research institutions, scientific data
+ * - GOV_SERVICES: Government services, civic identity
+ * - VOTING: Election and voting systems
+ * - E_COMMERCE: Online shopping, marketplaces
+ * - TRAVEL: Airlines, hotels, travel services
+ * - AI_LAB: AI research and development
+ * 
+ * Examples:
+ * - Hospital: [MEDICAL, RESEARCH]
+ * - University medical center: [INSTITUTION, MEDICAL, EDUCATION, RESEARCH]
+ * - Crypto bank: [FINANCIAL, CRYPTO_EXCHANGE]
+ * - Health insurance: [FINANCIAL, MEDICAL]
+ */
+export enum IssuerDomain {
+  GENERAL = 'GENERAL',
+  IDENTITY_INFRA = 'IDENTITY_INFRA',
+  FINANCIAL = 'FINANCIAL',
+  CRYPTO_EXCHANGE = 'CRYPTO_EXCHANGE',
+  MEDICAL = 'MEDICAL',
+  EDUCATION = 'EDUCATION',
+  RESEARCH = 'RESEARCH',
+  GOV_SERVICES = 'GOV_SERVICES',
+  VOTING = 'VOTING',
+  E_COMMERCE = 'E_COMMERCE',
+  TRAVEL = 'TRAVEL',
+  AI_LAB = 'AI_LAB',
+}
+
+/**
+ * Assurance Level (Axis 3: Trust Strength)
+ * 
+ * Indicates the strength of issuer verification and trust.
+ * Independent of type or domain.
  * 
  * Levels:
  * - UNVERIFIED: No formal verification (self-registered)
+ *   - Self-sovereign DIDs
+ *   - No background check
+ *   - Low-risk credentials only
+ * 
  * - BASIC_KYC: Basic identity verification completed
- * - REGULATED_ENTITY: Fully regulated entity (banking, finance, healthcare)
- * - SYSTEM_CRITICAL: Government or critical infrastructure (highest trust)
+ *   - Email + phone verified
+ *   - Basic business documentation
+ *   - Can issue low-value credentials
+ * 
+ * - REGULATED_ENTITY: Fully regulated and licensed entity
+ *   - Licensed by regulatory body (SEC, FDA, banking regulator, etc.)
+ *   - Regular audits required
+ *   - Can issue sensitive credentials (financial, medical)
+ * 
+ * - SYSTEM_CRITICAL: Government or critical infrastructure
+ *   - Highest trust tier
+ *   - Government backing or critical infrastructure role
+ *   - Can issue sovereign identity credentials
+ * 
+ * Examples:
+ * - Self-sovereign user: SELF_SOVEREIGN + GENERAL + UNVERIFIED
+ * - Small business: CORPORATION + E_COMMERCE + BASIC_KYC
+ * - Licensed hospital: CORPORATION + MEDICAL + REGULATED_ENTITY
+ * - Government voting: GOVERNMENT_ENTITY + GOV_SERVICES + SYSTEM_CRITICAL
  */
-export enum VerificationLevel {
+export enum AssuranceLevel {
   UNVERIFIED = 'UNVERIFIED',
   BASIC_KYC = 'BASIC_KYC',
   REGULATED_ENTITY = 'REGULATED_ENTITY',
   SYSTEM_CRITICAL = 'SYSTEM_CRITICAL',
 }
+
+// Legacy type aliases for backward compatibility
+export type IssuerCategory = IssuerType;
+export type VerificationLevel = AssuranceLevel;
 
 /**
  * Credential Type
@@ -173,26 +258,40 @@ export interface RiskAssessment {
 }
 
 /**
- * Issuer Record
+ * Issuer Record (On-Chain)
  * 
  * Complete metadata about a registered credential issuer.
  * This structure mirrors the on-chain AgenticDIDRegistry.
+ * 
+ * Uses THREE-AXIS MODEL:
+ * 1. issuerType: Legal form (SELF_SOVEREIGN, CORPORATION, GOVERNMENT_ENTITY, INSTITUTION)
+ * 2. domains: Array of sectors (MEDICAL, FINANCIAL, etc.) - can have multiple
+ * 3. assuranceLevel: Trust strength (UNVERIFIED, BASIC_KYC, REGULATED_ENTITY, SYSTEM_CRITICAL)
  */
 export interface IssuerRecord {
-  // Identity
+  // Identity (Axis 1: Legal Form)
   issuerDid: string;
-  category: IssuerCategory;
-  verificationLevel: VerificationLevel;
+  issuerType: IssuerType;
+  
+  // Sector Tags (Axis 2: What They Do) - MULTIPLE ALLOWED
+  domains: IssuerDomain[];
+  
+  // Trust Level (Axis 3: Verification Strength)
+  assuranceLevel: AssuranceLevel;
   
   // Legal Information
   legalName: string;
-  claimedBrandName?: string;  // "Amazon", "Bank of America", etc.
-  jurisdiction?: string;        // "US-DE", "EU", etc.
+  claimedBrandName?: string;    // "Amazon", "Bank of America", etc.
+  jurisdiction?: string;         // "US-DE", "EU", etc.
+  
+  // Brand Protection (fraud detection)
+  brandAttestationDid?: string;  // DID that attested this brand claim
+  brandAttestationProof?: string; // Cryptographic proof of brand ownership
   
   // Metadata
-  metadataHash?: string;        // Hash of off-chain details (licenses, docs)
-  registeredBy: string;         // DID of entity that onboarded this issuer
-  stakeAmount?: bigint;         // Optional stake/bond amount
+  metadataHash?: string;         // Hash of off-chain details (licenses, docs)
+  registeredBy: string;          // DID of entity that onboarded this issuer
+  stakeAmount?: bigint;          // Optional stake/bond amount
   
   // Status
   isRevoked: boolean;
@@ -205,16 +304,66 @@ export interface IssuerRecord {
 }
 
 /**
+ * Trusted Issuer Config (Protocol Layer)
+ * 
+ * Protocol-level configuration for a trusted issuer.
+ * Used in protocol/issuers/*.ts files.
+ * 
+ * Defines what credential types this issuer is ALLOWED and FORBIDDEN to issue.
+ */
+export interface TrustedIssuerConfig {
+  // Identity
+  issuerDid: string;
+  issuerHumanName: string;
+  
+  // THREE-AXIS MODEL
+  issuerType: IssuerType;
+  domains: IssuerDomain[];
+  assuranceLevel: AssuranceLevel;
+  
+  // Legal Information
+  legalName: string;
+  claimedBrandName?: string;
+  jurisdiction?: string;
+  
+  // Brand Protection
+  brandAttestationDid?: string;
+  isBrandProtected?: boolean;  // If true, self-sovereign can't claim this brand
+  
+  // Credential Policy
+  allowedCredentialTypes: CredentialType[];
+  forbiddenCredentialTypes: CredentialType[];
+  
+  // Status
+  isActive: boolean;
+  
+  // Metadata
+  description: string;
+  website?: string;
+  contact?: string;
+  logo?: string;
+}
+
+/**
  * Credential Type Policy
  * 
- * Defines which issuer categories can issue a specific credential type
- * and what minimum verification level is required.
+ * Defines which issuer types/domains can issue a specific credential type
+ * and what minimum assurance level is required.
+ * 
+ * Can specify domain requirements (e.g., MEDICAL credentials require MEDICAL domain).
  */
 export interface CredentialTypePolicy {
   credentialType: CredentialType;
-  allowedIssuerCategories: IssuerCategory[];
-  minVerificationLevel: VerificationLevel;
+  
+  // Allowed issuer configurations
+  allowedIssuerTypes: IssuerType[];
+  requiredDomains?: IssuerDomain[];  // Must have AT LEAST ONE of these domains
+  minAssuranceLevel: AssuranceLevel;
+  
+  // Additional requirements
   requiresStake?: boolean;
+  requiresBrandAttestation?: boolean;
+  
   description: string;
 }
 
@@ -222,14 +371,16 @@ export interface CredentialTypePolicy {
  * Task Agent Policy
  * 
  * Defines what credentials a task agent requires to authorize actions.
+ * Uses three-axis model for issuer requirements.
  */
 export interface TaskAgentPolicy {
   agentId: string;
   agentName: string;
   requiredCredentials: {
     credentialType: CredentialType;
-    allowedIssuerCategories: IssuerCategory[];
-    minVerificationLevel: VerificationLevel;
+    allowedIssuerTypes: IssuerType[];
+    requiredDomains?: IssuerDomain[];
+    minAssuranceLevel: AssuranceLevel;
   }[];
 }
 
@@ -253,10 +404,11 @@ export interface VerificationRequest {
 export interface VerificationResponse {
   valid: boolean;
   
-  // Issuer Information
+  // Issuer Information (three-axis model)
   issuerDid?: string;
-  issuerCategory?: IssuerCategory;
-  verificationLevel?: VerificationLevel;
+  issuerType?: IssuerType;
+  domains?: IssuerDomain[];
+  assuranceLevel?: AssuranceLevel;
   
   // Credential Information
   credentialType?: CredentialType;
@@ -274,17 +426,18 @@ export interface VerificationResponse {
  * Well-Known Brand
  * 
  * Represents a verified major brand that should only be claimed by
- * CORPORATION issuers with high verification levels.
+ * CORPORATION issuers with high assurance levels.
  * 
  * Used for fraud detection: if a SELF_SOVEREIGN claims to be one of these,
- * it's an instant red flag.
+ * it's an instant red flag unless they have brandAttestationDid.
  */
 export interface WellKnownBrand {
   brandName: string;
   aliases: string[];  // Alternative names/spellings
   expectedIssuerDid?: string;  // Known legitimate issuer DID
-  minCategory: IssuerCategory;
-  minVerificationLevel: VerificationLevel;
+  rootBrandDid?: string;  // Root brand DID that can issue attestations
+  minIssuerType: IssuerType;
+  minAssuranceLevel: AssuranceLevel;
 }
 
 /**
