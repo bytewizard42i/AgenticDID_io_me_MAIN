@@ -298,3 +298,71 @@ export interface ActionValidationResponse {
   missingCredentials?: CredentialType[];
   insufficientVerification?: boolean;
 }
+
+/**
+ * Agent Role
+ * 
+ * Defines the type/purpose of an agent in the system.
+ */
+export enum AgentRole {
+  LOCAL_AGENT = 'LOCAL_AGENT',           // User's personal agent (e.g., Comet)
+  ISSUER_AGENT = 'ISSUER_AGENT',         // Issues credentials for a trusted issuer (e.g., agent_0)
+  TASK_AGENT = 'TASK_AGENT',             // Performs specific tasks (e.g., Banker, Crypto)
+  VERIFIER_AGENT = 'VERIFIER_AGENT',     // Verifies credentials
+}
+
+/**
+ * Agent Record
+ * 
+ * Registered agent in the AgenticDID protocol.
+ * Indexed for fast lookups.
+ */
+export interface AgentRecord {
+  // Identity
+  agentDid: string;
+  agentId: string;  // Short ID (e.g., 'agent_0', 'canonical_agent_101')
+  
+  // Role and relationships
+  role: AgentRole;
+  parentIssuerDid?: string;  // For ISSUER_AGENTs, which issuer they represent
+  
+  // Metadata
+  description: string;
+  capabilities?: string[];   // List of capabilities (e.g., ['kyc', 'credential_issuance'])
+  
+  // System classification
+  isSystemAgent: boolean;    // True if agent_0..agent_100
+  
+  // Status
+  isActive: boolean;
+  
+  // Timestamps
+  createdAt: Date;
+  updatedAt?: Date;
+}
+
+/**
+ * Agent Query Filters
+ * 
+ * Filters for searching registered agents.
+ */
+export interface AgentQueryFilters {
+  role?: AgentRole;
+  parentIssuerDid?: string;
+  isSystemAgent?: boolean;
+  isActive?: boolean;
+  capability?: string;
+}
+
+/**
+ * Issuer Query Filters
+ * 
+ * Filters for searching trusted issuers.
+ */
+export interface IssuerQueryFilters {
+  category?: IssuerCategory;
+  verificationLevel?: VerificationLevel;
+  isActive?: boolean;
+  isRevoked?: boolean;
+  allowsCredentialType?: CredentialType;
+}
