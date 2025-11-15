@@ -40,7 +40,7 @@ import { DOCTORS_OFFICE_ISSUER_CONFIG } from './ti-doctors-office-issuer.js';
 import { HOSPITAL_ISSUER_CONFIG } from './ti-stanford-hospital-issuer.js';
 import { IVF_CENTER_ISSUER_CONFIG } from './ti-stanford-ivf-center-issuer.js';
 import { STANFORD_ISSUER_CONFIG } from './ti-stanford-college-issuer.js';
-import { BLUE_CROSS_ISSUER_CONFIG } from './ti-blue-cross-issuer.js';
+import { BLUE_CROSS_ISSUER_CONFIG } from './ti-blue-cross-medical-records-issuer.js';
 
 export const ALL_ISSUERS = [
   TRUSTED_ISSUER_0_CONFIG,        // ✅ ACTIVE

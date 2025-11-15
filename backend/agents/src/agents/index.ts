@@ -26,7 +26,7 @@ import { hospitalAgent } from './ra-stanford-hospital-agent.js';
 import { ivfCenterAgent } from './ra-stanford-ivf-center-agent.js';
 import { stanfordAgent } from './ra-stanford-college-agent.js';
 import { blueCrossAgent } from './ra-blue-cross-agent.js';
-import { medicalRecordsAgent } from './ra-medical-records-agent.js';
+import { medicalRecordsAgent } from './ra-blue-cross-medical-records-agent.js';
 
 /**
  * All agent definitions as a Record for easy lookup
