@@ -91,10 +91,10 @@
   - Shows incorrect issuer count (8 vs 7)
   - **→ Superseded by ISSUERS_AND_AGENTS_CHART.md**
 
-- **[AGENTS_AND_ISSUERS.md](./AGENTS_AND_ISSUERS.md)** ⚠️
-  - Uses old `IssuerCategory` and `VerificationLevel` terminology
-  - Doesn't include Stanford consolidation
-  - **→ Superseded by ISSUERS_AND_AGENTS_CHART.md and THREE_AXIS_ISSUER_MODEL.md**
+- **AGENTS_AND_ISSUERS.md** ❌ DELETED
+  - Used old `IssuerCategory` and `VerificationLevel` terminology
+  - Didn't include Stanford consolidation
+  - **→ Deleted, use ISSUERS_AND_AGENTS_CHART.md and THREE_AXIS_ISSUER_MODEL.md**
 
 ---
 
@@ -221,8 +221,7 @@ EDUCATIONAL_MEDICAL_RESEARCH_INSTITUTION? ← Category explosion! 😵
 5. **[ISSUER_0_CANONICAL_FLOW.md](./ISSUER_0_CANONICAL_FLOW.md)** - E2E flow
 
 ### Legacy (For Historical Reference)
-- **[REGISTRY_STATUS.md](./REGISTRY_STATUS.md)** ⚠️ Old model
-- **[AGENTS_AND_ISSUERS.md](./AGENTS_AND_ISSUERS.md)** ⚠️ Old terminology
+- **[REGISTRY_STATUS.md](./REGISTRY_STATUS.md)** ⚠️ Old model (consider deleting)
 
 ---
 

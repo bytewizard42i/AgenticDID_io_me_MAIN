@@ -773,10 +773,16 @@ category = IssuerCategory.CORPORATION;
    - Progressive journey
 
 ### **Domain-Specific**
-5. **[AGENTS_AND_ISSUERS.md](./AGENTS_AND_ISSUERS.md)**
+5. **[ISSUERS_AND_AGENTS_CHART.md](./ISSUERS_AND_AGENTS_CHART.md)**
+   - Complete registry (7 TIs, 8 RAs)
    - Agent definitions
    - Issuer types
    - Credential matrix
+
+6. **[THREE_AXIS_ISSUER_MODEL.md](./THREE_AXIS_ISSUER_MODEL.md)**
+   - Three-axis issuer model
+   - IssuerType + IssuerDomain + AssuranceLevel
+   - Real-world examples
 
 6. **[INDEXING_ARCHITECTURE.md](./INDEXING_ARCHITECTURE.md)**
    - RA/TI indexing

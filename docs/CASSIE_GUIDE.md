@@ -9,9 +9,10 @@
 
 **AgenticDID_REAL-DEAL is the source of truth, not a demo.**
 
-- `AGENTS_AND_ISSUERS.md`, `executor.ts`, `contract-loader.ts`, and the Compact contracts are **protocol spec**, not "just code"
+- `ISSUERS_AND_AGENTS_CHART.md`, `THREE_AXIS_ISSUER_MODEL.md`, `executor.ts`, `contract-loader.ts`, and the Compact contracts are **protocol spec**, not "just code"
 - Before touching anything:
-  - Read `AGENTS_AND_ISSUERS.md` end-to-end
+  - Read `ISSUERS_AND_AGENTS_CHART.md` for complete registry
+  - Read `THREE_AXIS_ISSUER_MODEL.md` for issuer model
   - Skim `executor.ts` to understand the execution pipeline
   - Skim `contract-loader.ts` and Midnight Gateway code to see how proofs & contracts are wired
 
@@ -297,10 +298,11 @@ Alice will be right here at your side, cross-checking the design and helping you
 
 When you make changes, ensure these stay consistent:
 
-1. **`docs/AGENTS_AND_ISSUERS.md`** - Protocol spec for agents and issuers
-2. **`backend/agents/src/executor.ts`** - Agent definitions and execution engine
-3. **`protocol/contracts/AgenticDIDRegistry.compact`** - On-chain issuer registry
-4. **`protocol/contracts/CredentialVerifier.compact`** - ZK proof verification
+1. **`docs/ISSUERS_AND_AGENTS_CHART.md`** - Complete registry for agents and issuers
+2. **`docs/THREE_AXIS_ISSUER_MODEL.md`** - Three-axis issuer model
+3. **`backend/agents/src/executor.ts`** - Agent definitions and execution engine
+4. **`protocol/contracts/AgenticDIDRegistry.compact`** - On-chain issuer registry
+5. **`protocol/contracts/CredentialVerifier.compact`** - ZK proof verification
 5. **`backend/midnight/src/verifier.ts`** - Off-chain verification logic
 6. **`backend/midnight/src/types.ts`** - TypeScript type definitions
 

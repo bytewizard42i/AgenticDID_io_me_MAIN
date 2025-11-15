@@ -69,12 +69,7 @@ All protocol rules in one organized document:
    - Implementation roadmap
    - TD Bank philosophy
 
-8. **[AGENTS_AND_ISSUERS.md](./AGENTS_AND_ISSUERS.md)**
-   - Legacy agent definitions (DEPRECATED - see ISSUERS_AND_AGENTS_CHART.md)
-   - Issuer categories and types
-   - Credential verification matrix
-
-9. **[INDEXING_ARCHITECTURE.md](./INDEXING_ARCHITECTURE.md)**
+8. **[INDEXING_ARCHITECTURE.md](./INDEXING_ARCHITECTURE.md)**
    - Registered Agents (RAs) indexing
    - Trusted Issuers (TIs) indexing
    - Three-tier caching (< 1ms lookups)
@@ -116,8 +111,9 @@ Learn about DIDs, KYC tiers, and what you can do
 → **[protocol/issuers/trusted-issuer-0.ts](../protocol/issuers/trusted-issuer-0.ts)** (Template)
 
 ### **I'm Building a Task Agent**
-→ **[AGENTS_AND_ISSUERS.md](./AGENTS_AND_ISSUERS.md)**  
+→ **[ISSUERS_AND_AGENTS_CHART.md](./ISSUERS_AND_AGENTS_CHART.md)**  
 → **[backend/agents/src/executor.ts](../backend/agents/src/executor.ts)** (Examples)
+→ **[protocol/agents/registered-agents.ts](../protocol/agents/registered-agents.ts)** (Configs)
 
 ### **I'm Integrating the Verifier**
 → **[PROTOCOL_RULES.md](./PROTOCOL_RULES.md)** (Verification Rules section)  
@@ -171,7 +167,6 @@ See: **[PROTOCOL_RULES.md](./PROTOCOL_RULES.md#canonical-identities)**
 | **ISSUERS_AND_AGENTS_CHART.md** | ✅ Complete | Registry chart (7 TIs, 8 RAs) |
 | **THREE_AXIS_ISSUER_MODEL.md** | ✅ Complete | Three-axis model guide |
 | **REGISTRY_STATUS.md** | ⚠️ Deprecated | See ISSUERS_AND_AGENTS_CHART.md |
-| **AGENTS_AND_ISSUERS.md** | ⚠️ Deprecated | See ISSUERS_AND_AGENTS_CHART.md |
 | **INDEXING_ARCHITECTURE.md** | ✅ Complete | RA/TI indexing |
 | **COMET_PERSONALITY.md** | ✅ Complete | Comet character |
 | **FIRST_THREE_ISSUERS.md** | ✅ Complete | BOA/Kraken/Visa |
