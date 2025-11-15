@@ -14,9 +14,7 @@ import {
   AMAZON_ISSUER_DID,
   AIRLINE_ISSUER_DID,
   ECUADORIAN_VOTING_ISSUER_DID,
-  HOSPITAL_ISSUER_DID,
   DOCTORS_OFFICE_ISSUER_DID,
-  IVF_CENTER_ISSUER_DID,
   STANFORD_ISSUER_DID,
 } from '../issuers/index.js';
 
@@ -210,31 +208,30 @@ export const VOTING_AGENT_CONFIG: RegisteredAgentConfig = {
 };
 
 /**
- * MEDICAL AGENT
+ * DOCTOR'S OFFICE AGENT
  * 
- * Healthcare services agent (covers Hospital, Doctor's Office, IVF Center) - INACTIVE
+ * Primary care medical agent - INACTIVE
  */
-export const MEDICAL_AGENT_CONFIG: RegisteredAgentConfig = {
-  agentDid: 'did:agentic:medical_agent',
-  agentId: 'medical_agent',
-  agentHumanName: 'Medical Agent',
+export const DOCTORS_OFFICE_AGENT_CONFIG: RegisteredAgentConfig = {
+  agentDid: 'did:agentic:doctors_office_agent',
+  agentId: 'doctors_office_agent',
+  agentHumanName: "Doctor's Office Agent",
   role: 'TASK_AGENT',
-  // Can work with multiple medical issuers
-  description: 'Healthcare agent for medical records, appointments, prescriptions, and treatments across hospitals, clinics, and specialized centers.',
+  parentIssuerDid: DOCTORS_OFFICE_ISSUER_DID,
+  description: "Primary care agent for doctor's appointments, prescriptions, and basic medical services.",
   capabilities: [
-    'view_medical_records',
     'book_appointment',
+    'view_appointment_history',
     'prescription_refill',
-    'lab_results',
-    'treatment_history',
-    'fertility_consultation',
+    'physical_exam_results',
+    'referral_management',
   ],
-  requiredCredentials: ['KYC_TIER_2', 'MEDICAL_RECORD'],
+  requiredCredentials: ['KYC_TIER_1', 'IDENTITY_VERIFIED'],
   isSystemAgent: false,
-  isActive: false,  // ❌ OFF until Medical issuers implemented
+  isActive: false,  // ❌ OFF until Doctor's Office issuer implemented
   metadata: {
-    icon: '🏥',
-    color: '#1ABC9C',
+    icon: '👨‍⚕️',
+    color: '#3498DB',
     category: 'healthcare',
   },
 };
@@ -283,14 +280,14 @@ export const STANFORD_AGENT_CONFIG: RegisteredAgentConfig = {
  * All Registered Agents
  */
 export const ALL_REGISTERED_AGENTS = [
-  COMET_AGENT_CONFIG,           // ✅ ACTIVE (local agent)
-  AGENT_0_CONFIG,               // 🔜 Next to implement
-  BANK_AGENT_CONFIG,            // ❌ OFF
-  AMAZON_AGENT_CONFIG,          // ❌ OFF
-  AIRLINE_AGENT_CONFIG,         // ❌ OFF
-  VOTING_AGENT_CONFIG,          // ❌ OFF
-  MEDICAL_AGENT_CONFIG,         // ❌ OFF
-  STANFORD_AGENT_CONFIG,        // ❌ OFF
+  COMET_AGENT_CONFIG,             // ✅ ACTIVE (local agent)
+  AGENT_0_CONFIG,                 // 🔜 Next to implement
+  BANK_AGENT_CONFIG,              // ❌ OFF
+  AMAZON_AGENT_CONFIG,            // ❌ OFF
+  AIRLINE_AGENT_CONFIG,           // ❌ OFF
+  VOTING_AGENT_CONFIG,            // ❌ OFF
+  DOCTORS_OFFICE_AGENT_CONFIG,    // ❌ OFF
+  STANFORD_AGENT_CONFIG,          // ❌ OFF (covers Hospital, IVF, Education)
 ] as const;
 
 export const ACTIVE_AGENTS = ALL_REGISTERED_AGENTS.filter(agent => agent.isActive);
