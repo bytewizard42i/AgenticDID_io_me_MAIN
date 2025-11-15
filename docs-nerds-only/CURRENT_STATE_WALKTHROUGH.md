@@ -442,7 +442,7 @@ protocol/issuers/
   ├── ti-ecuadorian-voting-issuer.ts ❌ Ecuador Voting (OFF)
   ├── ti-doctors-office-issuer.ts   ❌ Doctor's Office (OFF)
   ├── ti-stanford-hospital-issuer.ts ❌ Stanford Hospital (OFF)
-  ├── ti-stanford-ivf-center-issuer.ts ❌ Stanford IVF Center (OFF)
+  ├── ti-stanford-ivf-research-center-issuer.ts ❌ Stanford IVF Center (OFF)
   ├── ti-stanford-college-issuer.ts ❌ Stanford College (OFF)
   └── index.ts                   ✅ Exports all issuers
 ```

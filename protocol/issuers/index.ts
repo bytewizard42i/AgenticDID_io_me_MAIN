@@ -15,7 +15,7 @@ export { AIRLINE_ISSUER_CONFIG, AIRLINE_ISSUER_DID } from './ti-airline-issuer.j
 export { ECUADORIAN_VOTING_ISSUER_CONFIG, ECUADORIAN_VOTING_ISSUER_DID } from './ti-ecuadorian-gvnmnt-voting-issuer.js';
 export { DOCTORS_OFFICE_ISSUER_CONFIG, DOCTORS_OFFICE_ISSUER_DID } from './ti-doctors-office-issuer.js';
 export { HOSPITAL_ISSUER_CONFIG, HOSPITAL_ISSUER_DID } from './ti-stanford-hospital-issuer.js';
-export { IVF_CENTER_ISSUER_CONFIG, IVF_CENTER_ISSUER_DID } from './ti-stanford-ivf-center-issuer.js';
+export { IVF_CENTER_ISSUER_CONFIG, IVF_CENTER_ISSUER_DID } from './ti-stanford-ivf-research-center-issuer.js';
 export { STANFORD_ISSUER_CONFIG, STANFORD_ISSUER_DID } from './ti-stanford-college-issuer.js';
 export { BLUE_CROSS_ISSUER_CONFIG, BLUE_CROSS_ISSUER_DID } from './ti-blue-cross-medical-records-issuer.js';
 
@@ -38,7 +38,7 @@ import { AIRLINE_ISSUER_CONFIG } from './ti-airline-issuer.js';
 import { ECUADORIAN_VOTING_ISSUER_CONFIG } from './ti-ecuadorian-gvnmnt-voting-issuer.js';
 import { DOCTORS_OFFICE_ISSUER_CONFIG } from './ti-doctors-office-issuer.js';
 import { HOSPITAL_ISSUER_CONFIG } from './ti-stanford-hospital-issuer.js';
-import { IVF_CENTER_ISSUER_CONFIG } from './ti-stanford-ivf-center-issuer.js';
+import { IVF_CENTER_ISSUER_CONFIG } from './ti-stanford-ivf-research-center-issuer.js';
 import { STANFORD_ISSUER_CONFIG } from './ti-stanford-college-issuer.js';
 import { BLUE_CROSS_ISSUER_CONFIG } from './ti-blue-cross-medical-records-issuer.js';
 
