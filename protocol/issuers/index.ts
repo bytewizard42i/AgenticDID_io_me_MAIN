@@ -9,10 +9,10 @@
 export { TRUSTED_ISSUER_0_CONFIG } from './ti-trusted-issuer-0.js';
 
 // Inactive issuers (placeholders until implementation)
-export { BANK_ISSUER_CONFIG, BANK_ISSUER_DID } from './ti-bank-issuer.js';
+export { BANK_ISSUER_CONFIG, BANK_ISSUER_DID } from './ti-CEX-issuer.js';
 export { AMAZON_ISSUER_CONFIG, AMAZON_ISSUER_DID } from './ti-amazon-issuer.js';
 export { AIRLINE_ISSUER_CONFIG, AIRLINE_ISSUER_DID } from './ti-airline-issuer.js';
-export { ECUADORIAN_VOTING_ISSUER_CONFIG, ECUADORIAN_VOTING_ISSUER_DID } from './ti-ecuadorian-voting-issuer.js';
+export { ECUADORIAN_VOTING_ISSUER_CONFIG, ECUADORIAN_VOTING_ISSUER_DID } from './ti-ecuadorian-gvnmnt-voting-issuer.js';
 export { DOCTORS_OFFICE_ISSUER_CONFIG, DOCTORS_OFFICE_ISSUER_DID } from './ti-doctors-office-issuer.js';
 export { HOSPITAL_ISSUER_CONFIG, HOSPITAL_ISSUER_DID } from './ti-stanford-hospital-issuer.js';
 export { IVF_CENTER_ISSUER_CONFIG, IVF_CENTER_ISSUER_DID } from './ti-stanford-ivf-center-issuer.js';
@@ -32,10 +32,10 @@ export { BLUE_CROSS_ISSUER_CONFIG, BLUE_CROSS_ISSUER_DID } from './ti-blue-cross
  * Import all issuer configs for easy access.
  */
 import { TRUSTED_ISSUER_0_CONFIG } from './ti-trusted-issuer-0.js';
-import { BANK_ISSUER_CONFIG } from './ti-bank-issuer.js';
+import { BANK_ISSUER_CONFIG } from './ti-CEX-issuer.js';
 import { AMAZON_ISSUER_CONFIG } from './ti-amazon-issuer.js';
 import { AIRLINE_ISSUER_CONFIG } from './ti-airline-issuer.js';
-import { ECUADORIAN_VOTING_ISSUER_CONFIG } from './ti-ecuadorian-voting-issuer.js';
+import { ECUADORIAN_VOTING_ISSUER_CONFIG } from './ti-ecuadorian-gvnmnt-voting-issuer.js';
 import { DOCTORS_OFFICE_ISSUER_CONFIG } from './ti-doctors-office-issuer.js';
 import { HOSPITAL_ISSUER_CONFIG } from './ti-stanford-hospital-issuer.js';
 import { IVF_CENTER_ISSUER_CONFIG } from './ti-stanford-ivf-center-issuer.js';
