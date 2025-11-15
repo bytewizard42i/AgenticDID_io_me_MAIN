@@ -249,10 +249,10 @@ export const TRUSTED_ISSUER_0_ONBOARDING = {
   initialization: {
     step: 2,
     name: 'Issuer Agent Initialization',
-    description: 'Deploy agent_0 (AgenticDID Issuer Agent)',
+    description: 'Deploy agenticdid_agent (AgenticDID Issuer Agent)',
     actions: [
-      'Deploy agent_0 smart contracts',
-      'Link agent_0 to trusted_issuer_0',
+      'Deploy agenticdid_agent smart contracts',
+      'Link agenticdid_agent to trusted_issuer_0',
       'Configure KYC workflow',
       'Set up credential issuance pipeline',
       'Enable revocation mechanism',
@@ -265,9 +265,9 @@ export const TRUSTED_ISSUER_0_ONBOARDING = {
     description: 'John does his own KYC through the system',
     actions: [
       'John → Comet: "Do my KYC with AgenticDID"',
-      'Comet → agent_0: KYC request',
-      'agent_0 → John: KYC workflow (email, ID, etc.)',
-      'agent_0 → trusted_issuer_0: Issue credential',
+      'Comet → agenticdid_agent: KYC request',
+      'agenticdid_agent → John: KYC workflow (email, ID, etc.)',
+      'agenticdid_agent → trusted_issuer_0: Issue credential',
       'trusted_issuer_0 → Comet: Credential delivered',
       'Comet stores credential locally',
     ],

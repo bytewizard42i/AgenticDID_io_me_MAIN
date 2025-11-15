@@ -224,7 +224,7 @@ Trusted issuers are entities authorized to issue verifiable credentials.
 
 **Location:**
 ```
-protocol/issuers/trusted-issuer-0.ts
+protocol/issuers/ti-trusted-issuer-0.ts
 ```
 
 **Configuration (Three-Axis Model):**
@@ -292,7 +292,7 @@ protocol/issuers/trusted-issuer-0.ts
 **Files:**
 ```
 protocol/issuers/
-  ├── trusted-issuer-0.ts        ✅ Configuration
+  ├── ti-trusted-issuer-0.ts     ✅ Configuration
   └── index.ts                   ✅ Exports
 ```
 
@@ -435,13 +435,13 @@ Step 6: Test John's journey end-to-end
 ### Trusted Issuers
 ```
 protocol/issuers/
-  ├── trusted-issuer-0.ts        ✅ AgenticDID Foundation (ACTIVE)
-  ├── bank-issuer.ts             ❌ Bank (OFF)
-  ├── amazon-issuer.ts           ❌ Amazon (OFF)
-  ├── airline-issuer.ts          ❌ Airline (OFF)
-  ├── ecuadorian-voting-issuer.ts ❌ Ecuador Voting (OFF)
-  ├── doctors-office-issuer.ts   ❌ Doctor's Office (OFF)
-  ├── stanford-issuer.ts         ❌ Stanford (OFF, multi-domain)
+  ├── ti-trusted-issuer-0.ts        ✅ AgenticDID Foundation (ACTIVE)
+  ├── ti-bank-issuer.ts             ❌ Bank (OFF)
+  ├── ti-amazon-issuer.ts           ❌ Amazon (OFF)
+  ├── ti-airline-issuer.ts          ❌ Airline (OFF)
+  ├── ti-ecuadorian-voting-issuer.ts ❌ Ecuador Voting (OFF)
+  ├── ti-doctors-office-issuer.ts   ❌ Doctor's Office (OFF)
+  ├── ti-stanford-issuer.ts      ❌ Stanford (OFF, multi-domain)
   └── index.ts                   ✅ Exports all issuers
 ```
 

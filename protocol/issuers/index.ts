@@ -5,19 +5,19 @@
  * Organized by category and activation status.
  */
 
-// Active issuers
-export { TRUSTED_ISSUER_0_CONFIG } from './trusted-issuer-0.js';
+// Active issuers (TI- prefix = Trusted Issuer)
+export { TRUSTED_ISSUER_0_CONFIG } from './ti-trusted-issuer-0.js';
 
 // Inactive issuers (placeholders until implementation)
-export { BANK_ISSUER_CONFIG, BANK_ISSUER_DID } from './bank-issuer.js';
-export { AMAZON_ISSUER_CONFIG, AMAZON_ISSUER_DID } from './amazon-issuer.js';
-export { AIRLINE_ISSUER_CONFIG, AIRLINE_ISSUER_DID } from './airline-issuer.js';
-export { ECUADORIAN_VOTING_ISSUER_CONFIG, ECUADORIAN_VOTING_ISSUER_DID } from './ecuadorian-voting-issuer.js';
-export { DOCTORS_OFFICE_ISSUER_CONFIG, DOCTORS_OFFICE_ISSUER_DID } from './doctors-office-issuer.js';
-export { HOSPITAL_ISSUER_CONFIG, HOSPITAL_ISSUER_DID } from './hospital-issuer.js';
-export { IVF_CENTER_ISSUER_CONFIG, IVF_CENTER_ISSUER_DID } from './ivf-center-issuer.js';
-export { STANFORD_ISSUER_CONFIG, STANFORD_ISSUER_DID } from './stanford-issuer.js';
-export { BLUE_CROSS_ISSUER_CONFIG, BLUE_CROSS_ISSUER_DID } from './blue-cross-issuer.js';
+export { BANK_ISSUER_CONFIG, BANK_ISSUER_DID } from './ti-bank-issuer.js';
+export { AMAZON_ISSUER_CONFIG, AMAZON_ISSUER_DID } from './ti-amazon-issuer.js';
+export { AIRLINE_ISSUER_CONFIG, AIRLINE_ISSUER_DID } from './ti-airline-issuer.js';
+export { ECUADORIAN_VOTING_ISSUER_CONFIG, ECUADORIAN_VOTING_ISSUER_DID } from './ti-ecuadorian-voting-issuer.js';
+export { DOCTORS_OFFICE_ISSUER_CONFIG, DOCTORS_OFFICE_ISSUER_DID } from './ti-doctors-office-issuer.js';
+export { HOSPITAL_ISSUER_CONFIG, HOSPITAL_ISSUER_DID } from './ti-hospital-issuer.js';
+export { IVF_CENTER_ISSUER_CONFIG, IVF_CENTER_ISSUER_DID } from './ti-ivf-center-issuer.js';
+export { STANFORD_ISSUER_CONFIG, STANFORD_ISSUER_DID } from './ti-stanford-issuer.js';
+export { BLUE_CROSS_ISSUER_CONFIG, BLUE_CROSS_ISSUER_DID } from './ti-blue-cross-issuer.js';
 
 // Note: Hospital, IVF Center, Stanford, AND Blue Cross all exist as separate issuers
 // - Hospital: General acute care, emergency services, hospital admissions
@@ -31,16 +31,16 @@ export { BLUE_CROSS_ISSUER_CONFIG, BLUE_CROSS_ISSUER_DID } from './blue-cross-is
  * 
  * Import all issuer configs for easy access.
  */
-import { TRUSTED_ISSUER_0_CONFIG } from './trusted-issuer-0.js';
-import { BANK_ISSUER_CONFIG } from './bank-issuer.js';
-import { AMAZON_ISSUER_CONFIG } from './amazon-issuer.js';
-import { AIRLINE_ISSUER_CONFIG } from './airline-issuer.js';
-import { ECUADORIAN_VOTING_ISSUER_CONFIG } from './ecuadorian-voting-issuer.js';
-import { DOCTORS_OFFICE_ISSUER_CONFIG } from './doctors-office-issuer.js';
-import { HOSPITAL_ISSUER_CONFIG } from './hospital-issuer.js';
-import { IVF_CENTER_ISSUER_CONFIG } from './ivf-center-issuer.js';
-import { STANFORD_ISSUER_CONFIG } from './stanford-issuer.js';
-import { BLUE_CROSS_ISSUER_CONFIG } from './blue-cross-issuer.js';
+import { TRUSTED_ISSUER_0_CONFIG } from './ti-trusted-issuer-0.js';
+import { BANK_ISSUER_CONFIG } from './ti-bank-issuer.js';
+import { AMAZON_ISSUER_CONFIG } from './ti-amazon-issuer.js';
+import { AIRLINE_ISSUER_CONFIG } from './ti-airline-issuer.js';
+import { ECUADORIAN_VOTING_ISSUER_CONFIG } from './ti-ecuadorian-voting-issuer.js';
+import { DOCTORS_OFFICE_ISSUER_CONFIG } from './ti-doctors-office-issuer.js';
+import { HOSPITAL_ISSUER_CONFIG } from './ti-hospital-issuer.js';
+import { IVF_CENTER_ISSUER_CONFIG } from './ti-ivf-center-issuer.js';
+import { STANFORD_ISSUER_CONFIG } from './ti-stanford-issuer.js';
+import { BLUE_CROSS_ISSUER_CONFIG } from './ti-blue-cross-issuer.js';
 
 export const ALL_ISSUERS = [
   TRUSTED_ISSUER_0_CONFIG,        // ✅ ACTIVE

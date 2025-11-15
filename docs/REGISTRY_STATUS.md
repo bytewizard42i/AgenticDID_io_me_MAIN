@@ -220,15 +220,15 @@ Following TD Bank philosophy - copy agent_0 pattern:
 ```
 protocol/
   issuers/
-    ├── trusted-issuer-0.ts        ✅ ACTIVE
-    ├── bank-issuer.ts             ❌ OFF
-    ├── amazon-issuer.ts           ❌ OFF
-    ├── airline-issuer.ts          ❌ OFF
-    ├── ecuadorian-voting-issuer.ts ❌ OFF
-    ├── hospital-issuer.ts         ❌ OFF
-    ├── doctors-office-issuer.ts   ❌ OFF
-    ├── ivf-center-issuer.ts       ❌ OFF
-    └── index.ts                   (exports all)
+    ├── ti-trusted-issuer-0.ts        ✅ ACTIVE
+    ├── ti-bank-issuer.ts             ❌ OFF
+    ├── ti-amazon-issuer.ts           ❌ OFF
+    ├── ti-airline-issuer.ts          ❌ OFF
+    ├── ti-ecuadorian-voting-issuer.ts ❌ OFF
+    ├── ti-hospital-issuer.ts         ❌ OFF
+    ├── ti-doctors-office-issuer.ts   ❌ OFF
+    ├── ti-ivf-center-issuer.ts       ❌ OFF
+    └── index.ts                      (exports all)
   
   agents/
     ├── registered-agents.ts       (all agent configs)

@@ -272,11 +272,14 @@ USER can now use TASK_AGENTS
 
 ## 📝 Naming Conventions
 
-### **Files**: kebab-case
+### **Files**: kebab-case with TI-/RA- prefix
 ```
-✅ trusted-issuer-0.ts
-✅ blue-cross-issuer.ts
+✅ ti-trusted-issuer-0.ts
+✅ ti-blue-cross-issuer.ts
+✅ ra-comet.ts
+✅ ra-bank-agent.ts
 ❌ TrustedIssuer0.ts
+❌ trusted-issuer-0.ts (missing TI- prefix)
 ```
 
 ### **Constants**: SCREAMING_SNAKE_CASE

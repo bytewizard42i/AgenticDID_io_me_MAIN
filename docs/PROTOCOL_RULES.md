@@ -239,7 +239,7 @@ Where:
 - Case-insensitive matching
 - Prevents impersonation
 
-**Reference**: [`protocol/issuers/trusted-issuer-0.ts`](../protocol/issuers/trusted-issuer-0.ts)
+**Reference**: [`protocol/issuers/ti-trusted-issuer-0.ts`](../protocol/issuers/ti-trusted-issuer-0.ts)
 
 ---
 

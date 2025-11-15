@@ -66,13 +66,13 @@ export const COMET_AGENT_CONFIG: RegisteredAgentConfig = {
 };
 
 /**
- * ISSUER AGENT: agent_0 (AgenticDID Issuer Agent)
+ * ISSUER AGENT: agenticdid_agent (AgenticDID Issuer Agent)
  * 
  * Canonical issuer agent - ACTIVE (will be implemented next)
  */
-export const AGENT_0_CONFIG: RegisteredAgentConfig = {
+export const AGENTICDID_AGENT_CONFIG: RegisteredAgentConfig = {
   agentDid: AGENTICDID_ISSUER_AGENT_0_DID,
-  agentId: 'agent_0',
+  agentId: 'agenticdid_agent',
   agentHumanName: 'AgenticDID Issuer Agent',
   role: 'ISSUER_AGENT',
   parentIssuerDid: 'did:agentic:trusted_issuer_0',
@@ -316,7 +316,7 @@ export const BLUE_CROSS_AGENT_CONFIG: RegisteredAgentConfig = {
  */
 export const ALL_REGISTERED_AGENTS = [
   COMET_AGENT_CONFIG,             // ✅ ACTIVE (local agent)
-  AGENT_0_CONFIG,                 // 🔜 Next to implement
+  AGENTICDID_AGENT_CONFIG,        // 🔜 Next to implement
   BANK_AGENT_CONFIG,              // ❌ OFF
   AMAZON_AGENT_CONFIG,            // ❌ OFF
   AIRLINE_AGENT_CONFIG,           // ❌ OFF
