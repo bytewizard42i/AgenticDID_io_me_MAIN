@@ -17,11 +17,13 @@ export { DOCTORS_OFFICE_ISSUER_CONFIG, DOCTORS_OFFICE_ISSUER_DID } from './docto
 export { HOSPITAL_ISSUER_CONFIG, HOSPITAL_ISSUER_DID } from './hospital-issuer.js';
 export { IVF_CENTER_ISSUER_CONFIG, IVF_CENTER_ISSUER_DID } from './ivf-center-issuer.js';
 export { STANFORD_ISSUER_CONFIG, STANFORD_ISSUER_DID } from './stanford-issuer.js';
+export { BLUE_CROSS_ISSUER_CONFIG, BLUE_CROSS_ISSUER_DID } from './blue-cross-issuer.js';
 
-// Note: Hospital, IVF Center, AND Stanford all exist as separate issuers
+// Note: Hospital, IVF Center, Stanford, AND Blue Cross all exist as separate issuers
 // - Hospital: General acute care, emergency services, hospital admissions
 // - IVF Center: Specialized reproductive/fertility treatments
 // - Stanford: Academic institution with medical school + hospital (multi-domain)
+// - Blue Cross: Health insurance (FINANCIAL + MEDICAL multi-domain)
 // Different use cases, different specializations
 
 /**
@@ -38,6 +40,7 @@ import { DOCTORS_OFFICE_ISSUER_CONFIG } from './doctors-office-issuer.js';
 import { HOSPITAL_ISSUER_CONFIG } from './hospital-issuer.js';
 import { IVF_CENTER_ISSUER_CONFIG } from './ivf-center-issuer.js';
 import { STANFORD_ISSUER_CONFIG } from './stanford-issuer.js';
+import { BLUE_CROSS_ISSUER_CONFIG } from './blue-cross-issuer.js';
 
 export const ALL_ISSUERS = [
   TRUSTED_ISSUER_0_CONFIG,        // ✅ ACTIVE
@@ -49,6 +52,7 @@ export const ALL_ISSUERS = [
   HOSPITAL_ISSUER_CONFIG,         // ❌ INACTIVE (general acute care)
   IVF_CENTER_ISSUER_CONFIG,       // ❌ INACTIVE (specialized fertility)
   STANFORD_ISSUER_CONFIG,         // ❌ INACTIVE (academic + medical multi-domain)
+  BLUE_CROSS_ISSUER_CONFIG,       // ❌ INACTIVE (health insurance: financial + medical)
 ] as const;
 
 export const ACTIVE_ISSUERS = ALL_ISSUERS.filter(issuer => issuer.isActive);

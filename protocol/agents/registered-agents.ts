@@ -16,6 +16,8 @@ import {
   ECUADORIAN_VOTING_ISSUER_DID,
   DOCTORS_OFFICE_ISSUER_DID,
   STANFORD_ISSUER_DID,
+  BLUE_CROSS_ISSUER_DID,
+  HOSPITAL_ISSUER_DID,
 } from '../issuers/index.js';
 
 export interface RegisteredAgentConfig {
@@ -276,6 +278,39 @@ export const STANFORD_AGENT_CONFIG: RegisteredAgentConfig = {
   },
 };
 
+// Import Medical Records Agent
+import { MEDICAL_RECORDS_AGENT_CONFIG } from './medical-records-agent.js';
+
+/**
+ * Blue Cross Agent Configuration
+ */
+export const BLUE_CROSS_AGENT_CONFIG: RegisteredAgentConfig = {
+  agentDid: 'did:agentic:blue_cross_agent',
+  agentId: 'blue_cross_agent',
+  agentHumanName: 'Blue Cross Agent',
+  role: 'TASK_AGENT',
+  parentIssuerDid: BLUE_CROSS_ISSUER_DID,
+  description: 'Health insurance agent for Blue Cross Blue Shield. Handles coverage verification, claims, and provider network information.',
+  capabilities: [
+    'check_coverage',
+    'verify_benefits',
+    'submit_claim',
+    'track_claim_status',
+    'find_in_network_provider',
+    'get_cost_estimate',
+    'view_coverage_details',
+    'manage_prescription_coverage',
+  ],
+  requiredCredentials: ['KYC_TIER_1', 'INSURANCE_COVERAGE'],
+  isSystemAgent: false,
+  isActive: false,  // ❌ OFF until Blue Cross issuer implemented
+  metadata: {
+    icon: '🏥💙',
+    color: '#003087',  // Blue Cross blue
+    category: 'health_insurance',
+  },
+};
+
 /**
  * All Registered Agents
  */
@@ -287,7 +322,9 @@ export const ALL_REGISTERED_AGENTS = [
   AIRLINE_AGENT_CONFIG,           // ❌ OFF
   VOTING_AGENT_CONFIG,            // ❌ OFF
   DOCTORS_OFFICE_AGENT_CONFIG,    // ❌ OFF
-  STANFORD_AGENT_CONFIG,          // ❌ OFF (covers Hospital, IVF, Education)
+  STANFORD_AGENT_CONFIG,          // ❌ OFF
+  MEDICAL_RECORDS_AGENT_CONFIG,   // ❌ OFF (cross-provider coordination)
+  BLUE_CROSS_AGENT_CONFIG,        // ❌ OFF (health insurance)
 ] as const;
 
 export const ACTIVE_AGENTS = ALL_REGISTERED_AGENTS.filter(agent => agent.isActive);
