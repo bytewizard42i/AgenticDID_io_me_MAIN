@@ -15,7 +15,7 @@
 import type { AgentDefinition } from '../executor.js';
 
 // Import all agent definitions (RA- prefix = Registered Agent)
-import { cometAgent } from './ra-comet.js';
+import { cometAgent } from './ra-comet-local-user-agent.js';
 import { agenticDIDAgent } from './ra-agenticdid-agent.js';
 import { bankAgent } from './ra-bank-agent.js';
 import { amazonAgent } from './ra-amazon-agent.js';
