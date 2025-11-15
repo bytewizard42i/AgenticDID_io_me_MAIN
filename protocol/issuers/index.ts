@@ -6,7 +6,7 @@
  */
 
 // Active issuers (TI- prefix = Trusted Issuer)
-export { TRUSTED_ISSUER_0_CONFIG } from './ti-trusted-issuer-0.js';
+export { TRUSTED_ISSUER_0_CONFIG } from './ti-agenticdid-protocol-issuer.js';
 
 // Inactive issuers (placeholders until implementation)
 export { BANK_ISSUER_CONFIG, BANK_ISSUER_DID } from './ti-CEX-issuer.js';
@@ -31,7 +31,7 @@ export { BLUE_CROSS_ISSUER_CONFIG, BLUE_CROSS_ISSUER_DID } from './ti-blue-cross
  * 
  * Import all issuer configs for easy access.
  */
-import { TRUSTED_ISSUER_0_CONFIG } from './ti-trusted-issuer-0.js';
+import { TRUSTED_ISSUER_0_CONFIG } from './ti-agenticdid-protocol-issuer.js';
 import { BANK_ISSUER_CONFIG } from './ti-CEX-issuer.js';
 import { AMAZON_ISSUER_CONFIG } from './ti-amazon-issuer.js';
 import { AIRLINE_ISSUER_CONFIG } from './ti-airline-issuer.js';

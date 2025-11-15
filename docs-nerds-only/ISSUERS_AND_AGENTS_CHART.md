@@ -32,7 +32,65 @@
 | **4** | **Airline** | `did:agentic:airline_issuer` | CORPORATION | TRAVEL | REGULATED_ENTITY | Flights, miles, travel |
 | **5** | **Ecuador Voting Dept** | `did:agentic:ecuadorian_voting_issuer` | GOVERNMENT_ENTITY | GOV_SERVICES, VOTING | SYSTEM_CRITICAL | Voting, citizenship |
 | **6** | **Doctor's Office** | `did:agentic:doctors_office_issuer` | CORPORATION | MEDICAL | REGULATED_ENTITY | Primary care, prescriptions |
-| **7** | **Stanford University** 🎓 | `did:agentic:stanford_university` | INSTITUTION | EDUCATION, RESEARCH, MEDICAL | REGULATED_ENTITY | **Multi-domain:** Degrees, research, hospital, IVF |
+| **7-9** | **Stanford University** 🎓 | Multiple DIDs | INSTITUTION | EDUCATION, RESEARCH, MEDICAL | REGULATED_ENTITY | **See Stanford Multi-Issuer Architecture below** |
+
+---
+
+## 🏛️ Stanford Multi-Issuer Architecture
+
+### Protocol Design Principle: Compliance Over Corporate Identity
+
+Stanford University demonstrates a **critical protocol design decision**: **Trusted Issuers are organized by compliance domain and assurance level, NOT by corporate name**.
+
+Despite being a single organization, Stanford operates **THREE separate Trusted Issuers**:
+
+| Issuer | DID | Domain | Regulatory Framework | Credentials Issued |
+|--------|-----|--------|---------------------|-------------------|
+| **Stanford Hospital** | `did:agentic:stanford_hospital` | MEDICAL | HIPAA | Hospital admissions, surgical records, emergency care |
+| **Stanford IVF Center** | `did:agentic:stanford_ivf_center` | MEDICAL (specialized) | HIPAA + reproductive health | Fertility treatments, IVF cycles, reproductive health |
+| **Stanford College** | `did:agentic:stanford_university` | EDUCATION + RESEARCH | FERPA | Degrees, transcripts, research credentials |
+
+### Why Separate Issuers?
+
+Each Stanford issuer operates under **fundamentally different**:
+
+1. **Regulatory Compliance Frameworks**
+   - Hospital/IVF: HIPAA (Health Insurance Portability and Accountability Act)
+   - College: FERPA (Family Educational Rights and Privacy Act)
+
+2. **Assurance Levels & Verification Requirements**
+   - Medical: Real-time verification, emergency access protocols
+   - Academic: Long-term archival, degree verification
+
+3. **Credential Schemas & Data Models**
+   - Hospital: HL7 FHIR medical records
+   - IVF: Specialized reproductive health data
+   - College: Academic transcripts, degree certificates
+
+4. **Privacy & Consent Models**
+   - Medical: Patient consent, HIPAA privacy rules
+   - Academic: Student consent, FERPA privacy rules
+
+5. **Liability & Trust Boundaries**
+   - Medical malpractice vs academic fraud have different legal frameworks
+
+### The Three-Axis Trust Model
+
+This architecture demonstrates the protocol's **Three-Axis Trust Model**:
+
+**AXIS 1:** Issuer Category (CORPORATION vs INSTITUTION vs GOVERNMENT)  
+**AXIS 2:** Assurance Level (SELF_ATTESTED → SYSTEM_CRITICAL)  
+**AXIS 3:** Domain Specialization (MEDICAL vs EDUCATION vs RESEARCH)
+
+**Key Insight:** It's not about WHO issues the credential (Stanford), but about WHAT COMPLIANCE FRAMEWORK governs it and WHAT TRUST GUARANTEES it provides.
+
+### Similar Examples
+
+- **Blue Cross Blue Shield**: Separate issuers for health insurance vs medical records coordination
+- **Multi-national banks**: Separate issuers per regulatory jurisdiction (US Fed, EU ECB, etc.)
+- **Government agencies**: Separate issuers per department (DMV vs Social Security vs Voting)
+
+This is **functional separation by trust domain**, not corporate branding.
 
 ---
 
