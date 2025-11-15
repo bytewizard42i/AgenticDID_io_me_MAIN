@@ -108,7 +108,7 @@ Learn about DIDs, KYC tiers, and what you can do
 
 ### **I'm Building an Issuer**
 → **[PROTOCOL_RULES.md](./PROTOCOL_RULES.md)** (Issuer Rules section)  
-→ **[protocol/issuers/ti-trusted-issuer-0.ts](../protocol/issuers/ti-trusted-issuer-0.ts)** (Template)
+→ **[protocol/issuers/ti-agenticdid-protocol-issuer.ts](../protocol/issuers/ti-agenticdid-protocol-issuer.ts)** (Template)
 
 ### **I'm Building a Task Agent**
 → **[ISSUERS_AND_AGENTS_CHART.md](./ISSUERS_AND_AGENTS_CHART.md)**  

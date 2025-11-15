@@ -274,7 +274,7 @@ USER can now use TASK_AGENTS
 
 ### **Files**: kebab-case with TI-/RA- prefix
 ```
-✅ ti-trusted-issuer-0.ts
+✅ ti-agenticdid-protocol-issuer.ts
 ✅ ti-blue-cross-issuer.ts
 ✅ ra-comet.ts
 ✅ ra-bank-agent.ts

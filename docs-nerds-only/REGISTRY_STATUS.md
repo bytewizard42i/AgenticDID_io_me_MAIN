@@ -220,7 +220,7 @@ Following TD Bank philosophy - copy agent_0 pattern:
 ```
 protocol/
   issuers/
-    ├── ti-trusted-issuer-0.ts        ✅ ACTIVE
+    ├── ti-agenticdid-protocol-issuer.ts        ✅ ACTIVE
     ├── ti-bank-issuer.ts             ❌ OFF
     ├── ti-amazon-issuer.ts           ❌ OFF
     ├── ti-airline-issuer.ts          ❌ OFF

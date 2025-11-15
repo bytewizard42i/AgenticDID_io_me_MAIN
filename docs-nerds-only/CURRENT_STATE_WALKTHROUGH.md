@@ -224,7 +224,7 @@ Trusted issuers are entities authorized to issue verifiable credentials.
 
 **Location:**
 ```
-protocol/issuers/ti-trusted-issuer-0.ts
+protocol/issuers/ti-agenticdid-protocol-issuer.ts
 ```
 
 **Configuration (Three-Axis Model):**
@@ -292,7 +292,7 @@ protocol/issuers/ti-trusted-issuer-0.ts
 **Files:**
 ```
 protocol/issuers/
-  ├── ti-trusted-issuer-0.ts     ✅ Configuration
+  ├── ti-agenticdid-protocol-issuer.ts     ✅ Configuration
   └── index.ts                   ✅ Exports
 ```
 
@@ -435,7 +435,7 @@ Step 6: Test John's journey end-to-end
 ### Trusted Issuers
 ```
 protocol/issuers/
-  ├── ti-trusted-issuer-0.ts        ✅ AgenticDID Foundation (ACTIVE)
+  ├── ti-agenticdid-protocol-issuer.ts        ✅ AgenticDID Foundation (ACTIVE)
   ├── ti-bank-issuer.ts             ❌ Bank (OFF)
   ├── ti-amazon-issuer.ts           ❌ Amazon (OFF)
   ├── ti-airline-issuer.ts          ❌ Airline (OFF)
