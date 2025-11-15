@@ -225,9 +225,10 @@ protocol/
     ├── ti-amazon-issuer.ts           ❌ OFF
     ├── ti-airline-issuer.ts          ❌ OFF
     ├── ti-ecuadorian-voting-issuer.ts ❌ OFF
-    ├── ti-hospital-issuer.ts         ❌ OFF
     ├── ti-doctors-office-issuer.ts   ❌ OFF
-    ├── ti-ivf-center-issuer.ts       ❌ OFF
+    ├── ti-stanford-hospital-issuer.ts ❌ OFF
+    ├── ti-stanford-ivf-center-issuer.ts ❌ OFF
+    ├── ti-stanford-college-issuer.ts ❌ OFF
     └── index.ts                      (exports all)
   
   agents/
