@@ -14,17 +14,17 @@ export { AMAZON_ISSUER_CONFIG, AMAZON_ISSUER_DID } from './ti-amazon-issuer.js';
 export { AIRLINE_ISSUER_CONFIG, AIRLINE_ISSUER_DID } from './ti-airline-issuer.js';
 export { ECUADORIAN_VOTING_ISSUER_CONFIG, ECUADORIAN_VOTING_ISSUER_DID } from './ti-ecuadorian-voting-issuer.js';
 export { DOCTORS_OFFICE_ISSUER_CONFIG, DOCTORS_OFFICE_ISSUER_DID } from './ti-doctors-office-issuer.js';
-export { HOSPITAL_ISSUER_CONFIG, HOSPITAL_ISSUER_DID } from './ti-hospital-issuer.js';
-export { IVF_CENTER_ISSUER_CONFIG, IVF_CENTER_ISSUER_DID } from './ti-ivf-center-issuer.js';
-export { STANFORD_ISSUER_CONFIG, STANFORD_ISSUER_DID } from './ti-stanford-issuer.js';
+export { HOSPITAL_ISSUER_CONFIG, HOSPITAL_ISSUER_DID } from './ti-stanford-hospital-issuer.js';
+export { IVF_CENTER_ISSUER_CONFIG, IVF_CENTER_ISSUER_DID } from './ti-stanford-ivf-center-issuer.js';
+export { STANFORD_ISSUER_CONFIG, STANFORD_ISSUER_DID } from './ti-stanford-college-issuer.js';
 export { BLUE_CROSS_ISSUER_CONFIG, BLUE_CROSS_ISSUER_DID } from './ti-blue-cross-issuer.js';
 
-// Note: Hospital, IVF Center, Stanford, AND Blue Cross all exist as separate issuers
-// - Hospital: General acute care, emergency services, hospital admissions
-// - IVF Center: Specialized reproductive/fertility treatments
-// - Stanford: Academic institution with medical school + hospital (multi-domain)
-// - Blue Cross: Health insurance (FINANCIAL + MEDICAL multi-domain)
-// Different use cases, different specializations
+// Note: Stanford has THREE separate issuer entities:
+// - Stanford Hospital: General acute care, emergency services, hospital admissions
+// - Stanford IVF Center: Specialized reproductive/fertility treatments
+// - Stanford College: Academic institution (education + research)
+// Plus Blue Cross: Health insurance (FINANCIAL + MEDICAL multi-domain)
+// Different use cases, different specializations within same parent organization
 
 /**
  * All issuers registry
@@ -37,9 +37,9 @@ import { AMAZON_ISSUER_CONFIG } from './ti-amazon-issuer.js';
 import { AIRLINE_ISSUER_CONFIG } from './ti-airline-issuer.js';
 import { ECUADORIAN_VOTING_ISSUER_CONFIG } from './ti-ecuadorian-voting-issuer.js';
 import { DOCTORS_OFFICE_ISSUER_CONFIG } from './ti-doctors-office-issuer.js';
-import { HOSPITAL_ISSUER_CONFIG } from './ti-hospital-issuer.js';
-import { IVF_CENTER_ISSUER_CONFIG } from './ti-ivf-center-issuer.js';
-import { STANFORD_ISSUER_CONFIG } from './ti-stanford-issuer.js';
+import { HOSPITAL_ISSUER_CONFIG } from './ti-stanford-hospital-issuer.js';
+import { IVF_CENTER_ISSUER_CONFIG } from './ti-stanford-ivf-center-issuer.js';
+import { STANFORD_ISSUER_CONFIG } from './ti-stanford-college-issuer.js';
 import { BLUE_CROSS_ISSUER_CONFIG } from './ti-blue-cross-issuer.js';
 
 export const ALL_ISSUERS = [

@@ -22,9 +22,9 @@ import { amazonAgent } from './ra-amazon-agent.js';
 import { airlineAgent } from './ra-airline-agent.js';
 import { votingAgent } from './ra-voting-agent.js';
 import { doctorsOfficeAgent } from './ra-doctors-office-agent.js';
-import { hospitalAgent } from './ra-hospital-agent.js';
-import { ivfCenterAgent } from './ra-ivf-center-agent.js';
-import { stanfordAgent } from './ra-stanford-agent.js';
+import { hospitalAgent } from './ra-stanford-hospital-agent.js';
+import { ivfCenterAgent } from './ra-stanford-ivf-center-agent.js';
+import { stanfordAgent } from './ra-stanford-college-agent.js';
 import { blueCrossAgent } from './ra-blue-cross-agent.js';
 import { medicalRecordsAgent } from './ra-medical-records-agent.js';
 
