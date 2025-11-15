@@ -17,7 +17,7 @@ export { DOCTORS_OFFICE_ISSUER_CONFIG, DOCTORS_OFFICE_ISSUER_DID } from './ti-do
 export { HOSPITAL_ISSUER_CONFIG, HOSPITAL_ISSUER_DID } from './ti-stanford-hospital-issuer.js';
 export { IVF_CENTER_ISSUER_CONFIG, IVF_CENTER_ISSUER_DID } from './ti-stanford-ivf-center-issuer.js';
 export { STANFORD_ISSUER_CONFIG, STANFORD_ISSUER_DID } from './ti-stanford-college-issuer.js';
-export { BLUE_CROSS_ISSUER_CONFIG, BLUE_CROSS_ISSUER_DID } from './ti-blue-cross-issuer.js';
+export { BLUE_CROSS_ISSUER_CONFIG, BLUE_CROSS_ISSUER_DID } from './ti-blue-cross-medical-records-issuer.js';
 
 // Note: Stanford has THREE separate issuer entities:
 // - Stanford Hospital: General acute care, emergency services, hospital admissions
