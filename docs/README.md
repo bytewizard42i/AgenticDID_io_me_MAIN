@@ -52,36 +52,53 @@ All protocol rules in one organized document:
 
 ### **Domain-Specific Guides**
 
-5. **[AGENTS_AND_ISSUERS.md](./AGENTS_AND_ISSUERS.md)**
-   - Agent definitions (Comet, Banker, Crypto, etc.)
+5. **[ISSUERS_AND_AGENTS_CHART.md](./ISSUERS_AND_AGENTS_CHART.md)** ⭐ NEW
+   - Complete registry of all 7 TIs and 8 RAs
+   - Issuer→Agent relationships
+   - Credential type matrix
+   - Stanford multi-domain showcase
+
+6. **[THREE_AXIS_ISSUER_MODEL.md](./THREE_AXIS_ISSUER_MODEL.md)** ⭐ NEW
+   - IssuerType + IssuerDomain + AssuranceLevel
+   - Why we need three independent axes
+   - Real-world examples (Stanford, health insurance, etc.)
+   - Policy enforcement examples
+
+7. **[REGISTRY_STATUS.md](./REGISTRY_STATUS.md)**
+   - Complete registry status (DEPRECATED - see ISSUERS_AND_AGENTS_CHART.md)
+   - Implementation roadmap
+   - TD Bank philosophy
+
+8. **[AGENTS_AND_ISSUERS.md](./AGENTS_AND_ISSUERS.md)**
+   - Legacy agent definitions (DEPRECATED - see ISSUERS_AND_AGENTS_CHART.md)
    - Issuer categories and types
    - Credential verification matrix
 
-6. **[INDEXING_ARCHITECTURE.md](./INDEXING_ARCHITECTURE.md)**
+9. **[INDEXING_ARCHITECTURE.md](./INDEXING_ARCHITECTURE.md)**
    - Registered Agents (RAs) indexing
    - Trusted Issuers (TIs) indexing
    - Three-tier caching (< 1ms lookups)
 
-7. **[COMET_PERSONALITY.md](./COMET_PERSONALITY.md)**
-   - Comet as friend and assistant
-   - Narration modes (Listen In vs Fast)
-   - Communication style
+10. **[COMET_PERSONALITY.md](./COMET_PERSONALITY.md)**
+    - Comet as friend and assistant
+    - Narration modes (Listen In vs Fast)
+    - Communication style
 
-8. **[FIRST_THREE_ISSUERS.md](./FIRST_THREE_ISSUERS.md)**
-   - BOA, Kraken, Visa selection rationale
-   - Adaptive DNA pattern
-   - Forward-thinking institutions
+11. **[FIRST_THREE_ISSUERS.md](./FIRST_THREE_ISSUERS.md)**
+    - BOA, Kraken, Visa selection rationale
+    - Adaptive DNA pattern
+    - Forward-thinking institutions
 
 ---
 
 ### **Developer Guides**
 
-9. **[CASSIE_GUIDE.md](./CASSIE_GUIDE.md)**
-   - Developer guide for contributors
-   - Code style and conventions
-   - Protocol fidelity principles
+12. **[CASSIE_GUIDE.md](./CASSIE_GUIDE.md)**
+    - Developer guide for contributors
+    - Code style and conventions
+    - Protocol fidelity principles
 
-10. **[LESSONS_LEARNED.md](./LESSONS_LEARNED.md)**
+13. **[LESSONS_LEARNED.md](./LESSONS_LEARNED.md)**
     - Mesh.js patterns analysis
     - What worked, what to avoid
     - Implementation insights
@@ -151,7 +168,10 @@ See: **[PROTOCOL_RULES.md](./PROTOCOL_RULES.md#canonical-identities)**
 | **ONE_PERFECT_CHECK.md** | ✅ Complete | TD Bank philosophy |
 | **ISSUER_0_CANONICAL_FLOW.md** | ✅ Complete | End-to-end flow |
 | **DID_AND_KYC_ARCHITECTURE.md** | ✅ Complete | DIDz + KYC tiers |
-| **AGENTS_AND_ISSUERS.md** | ✅ Complete | Agents + issuers |
+| **ISSUERS_AND_AGENTS_CHART.md** | ✅ Complete | Registry chart (7 TIs, 8 RAs) |
+| **THREE_AXIS_ISSUER_MODEL.md** | ✅ Complete | Three-axis model guide |
+| **REGISTRY_STATUS.md** | ⚠️ Deprecated | See ISSUERS_AND_AGENTS_CHART.md |
+| **AGENTS_AND_ISSUERS.md** | ⚠️ Deprecated | See ISSUERS_AND_AGENTS_CHART.md |
 | **INDEXING_ARCHITECTURE.md** | ✅ Complete | RA/TI indexing |
 | **COMET_PERSONALITY.md** | ✅ Complete | Comet character |
 | **FIRST_THREE_ISSUERS.md** | ✅ Complete | BOA/Kraken/Visa |

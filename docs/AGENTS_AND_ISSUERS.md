@@ -1,7 +1,18 @@
 # AgenticDID Agents and Trusted Issuers
 
-**Last Updated**: November 14, 2025, 12:30pm  
-**Status**: Production specification
+> ⚠️ **DEPRECATION NOTICE**: This document uses the old issuer model and is superseded by:
+> - **[ISSUERS_AND_AGENTS_CHART.md](./ISSUERS_AND_AGENTS_CHART.md)** - Complete registry with three-axis model
+> - **[THREE_AXIS_ISSUER_MODEL.md](./THREE_AXIS_ISSUER_MODEL.md)** - Three-axis model explanation
+> 
+> **Old model:** `IssuerCategory` + `VerificationLevel`  
+> **New model:** `IssuerType` + `IssuerDomain[]` + `AssuranceLevel`
+> 
+> **Please refer to the new documentation for current information.**
+
+---
+
+**Last Updated**: November 14, 2025, 12:30pm *(LEGACY)*  
+**Status**: Superseded by three-axis model
 
 ---
 

@@ -1,6 +1,16 @@
 # AgenticDID Registry Status
 
-**Complete registry of all trusted issuers and registered agents**
+> ⚠️ **DEPRECATION NOTICE**: This document is superseded by **[ISSUERS_AND_AGENTS_CHART.md](./ISSUERS_AND_AGENTS_CHART.md)** which includes:
+> - The three-axis issuer model (IssuerType + IssuerDomain + AssuranceLevel)
+> - Stanford University consolidation (Hospital, IVF, Education → one multi-domain issuer)
+> - Updated registry with 7 TIs and 8 RAs
+> - Complete credential type matrix
+> 
+> **Please refer to ISSUERS_AND_AGENTS_CHART.md for current information.**
+
+---
+
+**Complete registry of all trusted issuers and registered agents** *(LEGACY - Nov 14, 2025)*
 
 ---
 
