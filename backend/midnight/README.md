@@ -386,10 +386,10 @@ PORT=3004
 
 ## 📚 Related Documentation
 
-- **[ONE_PERFECT_CHECK.md](../../docs/ONE_PERFECT_CHECK.md)** - TD Bank philosophy
-- **[AGENTS_AND_ISSUERS.md](../../docs/AGENTS_AND_ISSUERS.md)** - Protocol spec
-- **[CASSIE_GUIDE.md](../../docs/CASSIE_GUIDE.md)** - Development guide
-- **[LESSONS_LEARNED.md](../../docs/LESSONS_LEARNED.md)** - Mesh.js patterns
+- **[ONE_PERFECT_CHECK.md](../../docs-nerds-only/ONE_PERFECT_CHECK.md)** - TD Bank philosophy
+- **[AGENTS_AND_ISSUERS.md](../../docs-nerds-only/AGENTS_AND_ISSUERS.md)** - Protocol spec
+- **[CASSIE_GUIDE.md](../../docs-nerds-only/CASSIE_GUIDE.md)** - Development guide
+- **[LESSONS_LEARNED.md](../../docs-nerds-only/LESSONS_LEARNED.md)** - Mesh.js patterns
 
 ---
 

@@ -15,7 +15,7 @@ AgenticDID_io_me_REAL-DEAL/
 │   └── services/         ← Microservices (Midnight, TTS, etc.)
 ├── protocol/             ← Smart contracts + SDK
 ├── infrastructure/       ← Deployment configs (Render, Cloud Run, Docker)
-└── docs/                 ← Technical documentation
+└── docs-nerds-only/      ← Technical documentation
 ```
 
 ## 🚀 Quick Start (One Button!)
@@ -73,10 +73,7 @@ TTS_PROVIDER=google
 
 ## 📚 Documentation
 
-- [Architecture Overview](./docs/ARCHITECTURE.md)
-- [Agent Development Guide](./docs/AGENTS.md)
-- [Deployment Guide](./docs/DEPLOYMENT.md)
-- [API Reference](./docs/API.md)
+See [`docs-nerds-only/README.md`](./docs-nerds-only/README.md) for complete documentation.
 
 ## 🎯 Roadmap
 
