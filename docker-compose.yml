@@ -1,6 +1,28 @@
 version: '3.8'
 
 services:
+  # ==================== FRONTEND ====================
+  
+  # Web Frontend (React + Vite)
+  frontend:
+    build:
+      context: ./frontend/web
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_BASE=http://localhost:8787
+      - VITE_AGENTS_URL=http://localhost:3001
+      - VITE_MIDNIGHT_URL=http://localhost:3003
+      - VITE_ENABLE_TTS=true
+    volumes:
+      - ./frontend/web/src:/app/src
+      - ./frontend/web/index.html:/app/index.html
+    networks:
+      - agenticdid-network
+    depends_on:
+      - api-gateway
+
   # ==================== BACKEND ====================
   
   # API Gateway (Main HTTP API)
