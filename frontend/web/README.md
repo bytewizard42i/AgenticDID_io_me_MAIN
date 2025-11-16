@@ -94,6 +94,9 @@ src/
 ### Visual Language
 - **RAs (Registered Agents):** Hands flanking icons (👋[icon]🤚)
 - **TIs (Trusted Issuer/Verifiers):** Gavel on right ([icon]⚖️)
+  - **Name Display:** "Agent" suffix removed (e.g., "Bank of America Agent" → "Bank of America")
+  - **Status Preserved:** Parenthetical text kept (e.g., "Rogue Agent (Revoked)" → "Rogue (Revoked)")
+  - **Rationale:** TIs are organizations that verify, not agents that act
 - **Semantic Color System:** Each service has meaning (green=money, red=emergency, etc.)
 
 ### Animations

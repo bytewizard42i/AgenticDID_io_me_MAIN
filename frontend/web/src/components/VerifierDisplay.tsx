@@ -115,6 +115,9 @@ export default function VerifierDisplay({ selectedAgent, isProcessing, isVerifie
                   <div className="flex items-start gap-2">
                     <Shield className={`w-3 h-3 mt-0.5 ${ti.color} flex-shrink-0`} />
                     <p className={`font-semibold text-sm ${ti.color} break-words leading-relaxed`}>
+                      {/* Remove "Agent" suffix from TI names (they're organizations, not agents)
+                          Examples: "Bank of America Agent" → "Bank of America"
+                                    "Rogue Agent (Revoked)" → "Rogue (Revoked)" */}
                       {ti.name.replace(' Agent', '')}
                     </p>
                   </div>

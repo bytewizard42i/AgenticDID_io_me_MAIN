@@ -617,7 +617,10 @@ export default function App() {
               selectedAction={selectedAction}
               selectedAgent={AGENTS[workflowAgent]}
               selectedTI={{
-                // Remove "Agent" but keep parenthetical text like (Revoked)
+                // TI Name Transformation: Remove "Agent" suffix but preserve status indicators
+                // Examples: "Bank of America Agent" → "Bank of America"
+                //           "Rogue Agent (Revoked)" → "Rogue (Revoked)"
+                // Rationale: TIs are organizations that verify, not agents that act
                 name: AGENTS[workflowTI].name.replace(' Agent', ''),
                 // Remove hand emojis from TI icon and add gavel - TIs are organizations, not agents
                 icon: `${AGENTS[workflowTI].icon.replace(/👋|🤚/g, '').trim()}⚖️`,

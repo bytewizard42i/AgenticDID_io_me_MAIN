@@ -75,6 +75,29 @@ TIs issue credentials and verify agent authenticity.
 - **Scales of justice (⚖️):** Authority to verify and judge credentials
 - **No hands:** TIs don't perform actions, they verify
 
+#### **TI Name Transformation**
+
+**Important UI Pattern:** TI display names are transformed to show organizations, not agents.
+
+**Transformation Logic:**
+```typescript
+displayName = agentName.replace(' Agent', '')
+```
+
+**Examples:**
+- `"Bank of America Agent"` → `"Bank of America"` ✓
+- `"Stanford Hospital Agent"` → `"Stanford Hospital"` ✓
+- `"Rogue Agent (Revoked)"` → `"Rogue (Revoked)"` ✓ (preserves status!)
+
+**Why:**
+- TIs represent **organizations** (banks, hospitals, governments)
+- The word "Agent" implies action/tasks, but TIs **verify** and **issue**
+- Parenthetical text like `(Revoked)` is preserved as critical status information
+
+**Implementation:**
+- `VerifierDisplay.tsx`: TI card display names
+- `App.tsx`: WorkflowVisualization TI names
+
 #### **Special Agents**
 - **Comet (User's Local Agent):** `☄️` - Locked, cannot be changed
 - **AgenticDID Protocol:** `🔮` - Locked, system agent
