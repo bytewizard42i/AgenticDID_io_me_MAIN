@@ -617,8 +617,8 @@ export default function App() {
               selectedAction={selectedAction}
               selectedAgent={AGENTS[workflowAgent]}
               selectedTI={{
-                // Remove "Agent" suffix and parenthetical text - TIs are organizations, not agents
-                name: AGENTS[workflowTI].name.replace(/ Agent$/, '').replace(/ \(.*?\)/, ''),
+                // Remove "Agent" but keep parenthetical text like (Revoked)
+                name: AGENTS[workflowTI].name.replace(' Agent', ''),
                 // Remove hand emojis from TI icon and add gavel - TIs are organizations, not agents
                 icon: `${AGENTS[workflowTI].icon.replace(/👋|🤚/g, '').trim()}⚖️`,
                 color: AGENTS[workflowTI].color,
