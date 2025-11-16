@@ -115,7 +115,7 @@ export default function VerifierDisplay({ selectedAgent, isProcessing, isVerifie
                   <div className="flex items-start gap-2">
                     <Shield className={`w-3 h-3 mt-0.5 ${ti.color} flex-shrink-0`} />
                     <p className={`font-semibold text-sm ${ti.color} break-words leading-relaxed`}>
-                      {ti.name}
+                      {ti.name.replace(/ Agent$/, '').replace(/ \(.*?\)/, '')}
                     </p>
                   </div>
                   <p className="text-xs text-midnight-400 break-words leading-relaxed">
