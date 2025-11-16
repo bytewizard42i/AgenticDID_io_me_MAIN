@@ -281,18 +281,37 @@ The system automatically selects the best available British male voice:
 - **Text Secondary:** `midnight-300`, `midnight-400`
 - **Text Tertiary:** `midnight-500`
 
-### Agent-Specific Colors
-- Bank: `text-green-400`
-- Crypto: `text-yellow-400`
-- Amazon: `text-orange-400`
-- Airline: `text-blue-400`
-- Voting: `text-teal-400`
-- Doctor: `text-cyan-400`
-- Hospital: `text-red-400`
-- IVF: `text-pink-400`
-- University: `text-amber-400`
-- Insurance: `text-blue-600`
-- Medical Records: `text-slate-400`
+### Agent-Specific Colors (Semantic Color System)
+
+Each RA and TI uses a color that matches their real-world identity and service category. This creates instant visual recognition without requiring a legend.
+
+**Financial Services:**
+- **Bank of America:** `text-green-400` 💚 - Money, growth, traditional finance
+- **Crypto Exchange:** `text-yellow-400` 💛 - Gold/bitcoin, digital currency
+- **Blue Cross Insurance:** `text-blue-600` 💙 - Trust, stability, protection (brand match)
+
+**E-Commerce & Travel:**
+- **Amazon:** `text-orange-400` 🧡 - Energy, shopping, action (brand match)
+- **Airlines:** `text-blue-400` 💙 - Sky blue, flight, travel
+
+**Government & Civic:**
+- **Voting Authority:** `text-teal-400` 💚 - Trust, authority, civic duty
+
+**Healthcare Spectrum:**
+- **Doctor's Office:** `text-cyan-400` 💙 - Medical, clinical, primary care
+- **Hospital (Emergency):** `text-red-400` ❤️ - Emergency, critical care, urgency
+- **IVF Center:** `text-pink-400` 💖 - Care, fertility, family, compassion
+- **Medical Records:** `text-slate-400` 🩶 - Neutral, administrative, professional
+
+**Education:**
+- **University:** `text-amber-400` 🧡 - Academic excellence, achievement, degrees
+
+**Design Principles:**
+1. **Brand Recognition** - Colors match real-world brand associations
+2. **Semantic Meaning** - Red = emergency, green = money, gold = education
+3. **Visual Hierarchy** - Each service instantly recognizable by color
+4. **Accessibility** - All colors are 400/600 level for high contrast on dark backgrounds
+5. **Consistency** - Same color in RA cards, TI cards, and workflow visualization
 
 ---
 
