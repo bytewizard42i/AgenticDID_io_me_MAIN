@@ -251,9 +251,17 @@ The horizontal flow that shows the complete transaction journey.
 ```
 
 ### Speech Parameters
-- **Comet:** `rate: 1.1`, default pitch
+- **Comet:** `rate: 1.1`, default pitch, **British male voice** (`en-GB`)
+  - Auto-selects: Daniel, Arthur, or any GB male voice
+  - Fallback: Any British English voice
 - **Agents:** `rate: 1.1`, `pitch: 0.9` (slightly lower)
 - **Rogue Mode:** `rate: 1.2`, `pitch: 1.1` (urgent, higher)
+
+### Voice Selection
+The system automatically selects the best available British male voice:
+1. First preference: British male voices (Daniel, Arthur, or names containing "Male")
+2. Fallback: Any British English voice (`en-GB` or `en-UK`)
+3. Voices are pre-loaded on component mount for reliable selection
 
 ---
 
@@ -407,25 +415,50 @@ export const WORKFLOW_MAPPING: Record<string, { agentKey: AgentType; tiKey: Agen
 - No manual agent selection required
 - Clear visual feedback of auto-selection
 
-### 2. **State Reset on Completion**
+### 2. **Task-First Guidance**
+- If user clicks on RA or TI button, helpful banner appears
+- "☄️ Comet says: Start with a Task!" message
+- Explains the auto-selection workflow
+- "Go to Tasks" button smoothly scrolls to Tasks area
+- Banner can be dismissed with X button
+- Prevents confusion about manual selection
+- Reinforces task-first approach
+
+**Tasks Prompt Banner Design:**
+```
+Position: Fixed top center
+Animation: slideDown (0.3s ease-out)
+Background: Cyan/blue gradient with backdrop blur
+Border: 2px cyan-400 with glow shadow
+Z-index: 50 (always on top)
+
+Content:
+- Bouncing arrow icon (⬇️)
+- Comet emoji and guidance text
+- Bold emphasis on "choose what you want to do"
+- Primary action: "Go to Tasks" button (cyan)
+- Secondary action: X close button
+```
+
+### 3. **State Reset on Completion**
 - Task buttons auto-clear after success
 - Ready for next action immediately
 - No manual cleanup required
 - "New Action" provides explicit reset option
 
-### 3. **Instant Cancellation**
+### 4. **Instant Cancellation**
 - Cancel button available at all times
 - Immediate effect (stops cold)
 - Clear feedback of cancellation
 - Safe to click anytime
 
-### 4. **Visual Progression**
+### 5. **Visual Progression**
 - LED racing border on task
 - Blink → Glow progression
 - Left-to-right flow visualization
 - Confetti celebration
 
-### 5. **Locked System Agents**
+### 6. **Locked System Agents**
 - Comet and AgenticDID cannot be changed
 - Yellow border + "Locked" badge
 - Clear visual distinction
