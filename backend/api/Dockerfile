@@ -43,8 +43,8 @@ COPY package.json bun.lockb* ./
 
 # Install dependencies
 # --frozen-lockfile ensures reproducible builds
-# --production=false includes devDependencies (needed for TypeScript types)
-RUN bun install --frozen-lockfile --production=false
+# No --production flag includes devDependencies (needed for TypeScript types)
+RUN bun install --frozen-lockfile
 
 # ============================================================================
 # STAGE 2: BUILD - Compile TypeScript (if needed)

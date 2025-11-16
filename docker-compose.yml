@@ -1,23 +1,6 @@
 version: '3.8'
 
 services:
-  # ==================== FRONTEND ====================
-  frontend:
-    build:
-      context: ./frontend/web
-      dockerfile: Dockerfile
-    ports:
-      - "5173:5173"
-    environment:
-      - VITE_API_BASE=http://localhost:8787
-      - VITE_AGENTS_WS=ws://localhost:3000
-    volumes:
-      - ./frontend/web/src:/app/src
-    networks:
-      - agenticdid-network
-    depends_on:
-      - api-gateway
-
   # ==================== BACKEND ====================
   
   # API Gateway (Main HTTP API)
@@ -29,9 +12,8 @@ services:
       - "8787:8787"
     environment:
       - NODE_ENV=development
-      - AGENTS_RUNTIME_URL=http://agents-runtime:3000
-      - MIDNIGHT_GATEWAY_URL=http://midnight-gateway:3001
-      - TTS_SERVICE_URL=http://tts-service:3002
+      - AGENTS_RUNTIME_URL=http://agents-runtime:3001
+      - MIDNIGHT_GATEWAY_URL=http://midnight-gateway:3003
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
     env_file:
       - .env
@@ -46,31 +28,31 @@ services:
   # Agents Runtime (Google ADK + Claude)
   agents-runtime:
     build:
-      context: ./backend/agents-runtime
+      context: ./backend/agents
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3001:3001"
     environment:
       - NODE_ENV=development
+      - PORT=3001
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - GOOGLE_APPLICATION_CREDENTIALS_JSON=${GOOGLE_APPLICATION_CREDENTIALS_JSON}
-      - MIDNIGHT_GATEWAY_URL=http://midnight-gateway:3001
-      - TTS_SERVICE_URL=http://tts-service:3002
-      - ENABLE_LISTEN_IN_MODE=${ENABLE_LISTEN_IN_MODE}
+      - MIDNIGHT_GATEWAY_URL=http://midnight-gateway:3003
+      - ENABLE_LISTEN_IN_MODE=false
     env_file:
       - .env
     volumes:
-      - ./backend/agents-runtime/src:/app/src
+      - ./backend/agents/src:/app/src
     networks:
       - agenticdid-network
 
   # Midnight Gateway (Smart Contracts)
   midnight-gateway:
     build:
-      context: ./backend/services/midnight-gateway
+      context: ./backend/midnight
       dockerfile: Dockerfile
     ports:
-      - "3001:3001"
+      - "3003:3003"
     environment:
       - NODE_ENV=development
       - MIDNIGHT_RPC_URL=${MIDNIGHT_RPC_URL}
@@ -80,61 +62,30 @@ services:
     env_file:
       - .env
     volumes:
-      - ./backend/services/midnight-gateway/src:/app/src
+      - ./backend/midnight/src:/app/src
       - ./protocol/contracts:/app/contracts:ro
     networks:
       - agenticdid-network
 
-  # TTS Service (Google Cloud TTS)
-  tts-service:
-    build:
-      context: ./backend/services/tts-service
-      dockerfile: Dockerfile
-    ports:
-      - "3002:3002"
-    environment:
-      - NODE_ENV=development
-      - GOOGLE_APPLICATION_CREDENTIALS_JSON=${GOOGLE_APPLICATION_CREDENTIALS_JSON}
-      - TTS_PROVIDER=${TTS_PROVIDER}
-      - TTS_VOICE_NAME=${TTS_VOICE_NAME}
-      - TTS_LANGUAGE_CODE=${TTS_LANGUAGE_CODE}
-    env_file:
-      - .env
-    volumes:
-      - ./backend/services/tts-service/src:/app/src
-    networks:
-      - agenticdid-network
-
-  # Credential Registry (Optional - Phase 2)
-  credential-registry:
-    build:
-      context: ./backend/services/credential-registry
-      dockerfile: Dockerfile
-    ports:
-      - "3003:3003"
-    environment:
-      - NODE_ENV=development
-      - DATABASE_URL=${DATABASE_URL}
-      - REDIS_URL=${REDIS_URL}
-    env_file:
-      - .env
-    volumes:
-      - ./backend/services/credential-registry/src:/app/src
-    networks:
-      - agenticdid-network
-    profiles:
-      - full
-
-  # ==================== DOCUMENTATION ====================
-  docs:
-    image: nginx:alpine
-    ports:
-      - "8080:80"
-    volumes:
-      - ./docs:/usr/share/nginx/html:ro
-      - ../AgenticDID_DEMO-LAND/agentic-did/docs:/usr/share/nginx/html/demo:ro
-    networks:
-      - agenticdid-network
+  # TTS Service (Google Cloud TTS) - Commented out for now (optional service)
+  # tts-service:
+  #   build:
+  #     context: ./backend/services/tts-service
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "3002:3002"
+  #   environment:
+  #     - NODE_ENV=development
+  #     - GOOGLE_APPLICATION_CREDENTIALS_JSON=${GOOGLE_APPLICATION_CREDENTIALS_JSON}
+  #     - TTS_PROVIDER=${TTS_PROVIDER}
+  #     - TTS_VOICE_NAME=${TTS_VOICE_NAME}
+  #     - TTS_LANGUAGE_CODE=${TTS_LANGUAGE_CODE}
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     - ./backend/services/tts-service/src:/app/src
+  #   networks:
+  #     - agenticdid-network
 
 networks:
   agenticdid-network:
