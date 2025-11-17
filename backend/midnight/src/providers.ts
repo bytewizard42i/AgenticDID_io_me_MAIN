@@ -6,9 +6,9 @@
  */
 
 import { httpClientProofProvider } from '@midnight-ntwrk/midnight-js-http-client-proof-provider';
-import { createPublicDataProvider } from '@midnight-ntwrk/midnight-js-indexer-public-data-provider';
-import { nodeZkConfigProvider } from '@midnight-ntwrk/midnight-js-node-zk-config-provider';
-import type { ProofProvider, PublicDataProvider, ZkConfigProvider } from '@midnight-ntwrk/midnight-js-types';
+import { indexerPublicDataProvider } from '@midnight-ntwrk/midnight-js-indexer-public-data-provider';
+import { NodeZkConfigProvider } from '@midnight-ntwrk/midnight-js-node-zk-config-provider';
+import type { ProofProvider, PublicDataProvider, ZKConfigProvider } from '@midnight-ntwrk/midnight-js-types';
 import type { Logger } from 'pino';
 import { wrapWithLogging } from './utils/logging-wrapper.js';
 import { retryWithBackoff, RetryPredicates } from './utils/retry.js';
@@ -20,7 +20,7 @@ import type { MidnightConfig } from './config.js';
 export interface MidnightProviders {
   proofProvider: ProofProvider<string>;
   publicDataProvider: PublicDataProvider;
-  zkConfigProvider: ZkConfigProvider;
+  zkConfigProvider: ZKConfigProvider<string>;
 }
 
 /**
@@ -39,7 +39,7 @@ export interface ProofServerStatus {
  * @param logger - Pino logger instance
  * @returns Object containing all configured providers
  */
-export async function createProviders(
+export async function createMidnightProviders(
   config: MidnightConfig,
   logger: Logger
 ): Promise<MidnightProviders> {
@@ -76,7 +76,7 @@ export async function createProviders(
     // Create public data provider (indexer)
     logger.debug('Creating public data provider...');
     const publicDataProvider = await retryWithBackoff(
-      () => Promise.resolve(createPublicDataProvider(config.indexerUrl)),
+      () => Promise.resolve(indexerPublicDataProvider(config.indexerUrl, config.indexerUrl.replace('http', 'ws'))),
       {
         maxRetries: 3,
         initialDelay: 1000,
@@ -89,7 +89,7 @@ export async function createProviders(
     // Create ZK config provider (reads compiled contracts and ZK configs)
     logger.debug('Creating ZK config provider...');
     const zkConfigProvider = await retryWithBackoff(
-      () => Promise.resolve(nodeZkConfigProvider(config.contractsPath)),
+      () => Promise.resolve(new NodeZkConfigProvider(config.contractsPath)),
       {
         maxRetries: 3,
         initialDelay: 500,

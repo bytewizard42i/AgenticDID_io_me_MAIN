@@ -7,8 +7,10 @@
  * Pattern learned from reference-repos/example-counter/counter-cli/src/config.ts
  */
 
-import { NetworkId, setNetworkId } from '@midnight-ntwrk/midnight-js-network-id';
 import type { Logger } from 'pino';
+
+// Mock NetworkId types until we integrate real Midnight packages
+export type NetworkId = 'undeployed' | 'devnet' | 'testnet';
 
 /**
  * Midnight Network deployment modes
@@ -32,7 +34,7 @@ export interface MidnightConfig {
   mode: DeploymentMode;
   
   /** Midnight Network ID (must match mode) */
-  networkId: NetworkId;
+  networkId: NetworkId; // Currently mock - will use real @midnight-ntwrk packages when connected
   
   /** Proof server URL (typically localhost for privacy) */
   proofServerUrl: string;
@@ -194,7 +196,7 @@ export function loadConfig(logger?: Logger): MidnightConfig {
     // CORS
     corsEnabled: parseBool(process.env[ENV.CORS_ENABLED], defaults.corsEnabled),
     corsOrigins: process.env[ENV.CORS_ORIGINS]
-      ? process.env[ENV.CORS_ORIGINS].split(',').map((o) => o.trim())
+      ? process.env[ENV.CORS_ORIGINS]!.split(',').map((o) => o.trim())
       : defaults.corsOrigins,
     
     // Logging
@@ -215,9 +217,8 @@ export function loadConfig(logger?: Logger): MidnightConfig {
   // Validate configuration
   validateConfig(config, logger);
   
-  // Set global NetworkId (MUST be done before any Midnight operations!)
-  setNetworkId(config.networkId);
-  logger?.info(`NetworkId set to: ${NetworkId[config.networkId]}`);
+  // Mock NetworkId setting (real implementation will use setNetworkId from @midnight-ntwrk packages)
+  logger?.info(`NetworkId configured: ${config.networkId}`);
   
   return config;
 }
@@ -254,14 +255,16 @@ function parseDeploymentMode(value: string): DeploymentMode {
 function getNetworkIdForMode(mode: DeploymentMode): NetworkId {
   switch (mode) {
     case DeploymentMode.UNDEPLOYED:
-      return NetworkId.Undeployed;
+      return 'undeployed';
     
     case DeploymentMode.DEVNET:
+      return 'devnet';
+    
     case DeploymentMode.TESTNET:
-      return NetworkId.TestNet; // Both use TestNet NetworkId
+      return 'testnet';
     
     default:
-      return NetworkId.Undeployed;
+      return 'undeployed';
   }
 }
 
@@ -362,7 +365,7 @@ function isValidUrl(urlString: string): boolean {
 export function getConfigSummary(config: MidnightConfig): Record<string, any> {
   return {
     mode: config.mode,
-    networkId: NetworkId[config.networkId],
+    networkId: config.networkId, // Mock implementation (string)
     proofServerUrl: config.proofServerUrl,
     indexerUrl: sanitizeUrl(config.indexerUrl),
     nodeUrl: sanitizeUrl(config.nodeUrl),

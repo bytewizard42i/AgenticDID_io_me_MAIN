@@ -1,0 +1,12 @@
+// Simple test contract for Phase 1
+pragma language_version >= 0.18.0;
+
+import CompactStandardLibrary;
+
+// Public state - simple counter
+export ledger counter: Counter;
+
+// Increment counter (public circuit)
+export circuit increment(): [] {
+  counter.increment(1);
+}

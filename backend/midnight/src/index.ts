@@ -21,13 +21,10 @@ import { createMidnightProviders, type MidnightProviders } from './providers.js'
 import { createContractLoader, type ContractLoader } from './contract-loader.js';
 import { ZKProofVerifier } from './verifier.js';
 import { FraudDetector } from './fraud-detection.js';
-import {
-  CredentialType,
+import { CredentialType, RiskScore } from './types.js';
+import type {
   IssuerCategory,
   VerificationLevel,
-  RiskScore,
-} from './types.js';
-import type {
   VerificationRequest,
   VerificationResponse,
   IssuerRecord,
