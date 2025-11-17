@@ -84,7 +84,7 @@ start_proof_server() {
             --name ${PROOF_SERVER_CONTAINER} \
             --restart unless-stopped \
             -p ${PROOF_SERVER_PORT}:${PROOF_SERVER_PORT} \
-            midnightnetwork/proof-server:Cassie-2025-11-16 \
+            midnightnetwork/proof-server:3.0.7 \
             midnight-proof-server --network undeployed
     fi
     
