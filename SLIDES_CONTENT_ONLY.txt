@@ -1,33 +1,45 @@
 ═══════════════════════════════════════════════════════════════
- AGENTICDID.IO - GOOGLE SLIDES CONTENT (COPY-PASTE READY)
+ AGENTICDID.IO - GOOGLE SLIDES (FORMATTED FOR COPY-PASTE)
+ Instructions: Click "Add title" → Paste TITLE
+              Click "Add text" → Paste BODY
 ═══════════════════════════════════════════════════════════════
 
-SLIDE 1: TITLE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SLIDE 1: TITLE SLIDE (Use "Title Slide" layout)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 🔮 AgenticDID.io
 
+SUBTITLE:
 The Identity Layer for Agentic Commerce
-
 Built on Midnight Network
 
-[Footer]: EnterpriseZK Labs | Midnight Hackathon 2025
+FOOTER:
+EnterpriseZK Labs | Midnight Hackathon 2025
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 2: THE PROBLEM
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 The Agentic Identity Crisis
 
+BODY:
 🤖 AI agents are managing our money, healthcare, and shopping
 
 ❓ Who authorizes them? How do they prove it?
 
 🔒 Traditional identity systems are centralized and invasive
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 3: THE GAP
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 Current Identity Systems Fail Agents
 
+BODY:
 Traditional DIDs                What Agents Need
 ─────────────────              ──────────────────
 ❌ Built for humans             ✅ Agent-native authorization
@@ -35,11 +47,14 @@ Traditional DIDs                What Agents Need
 ❌ Centralized control          ✅ Self-sovereign control
 ❌ No privacy guarantees        ✅ Zero-knowledge privacy
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 4: THE SOLUTION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 AgenticDID: Identity Built for Agents
 
+BODY:
 1️⃣ Self-Sovereign DIDs
    You control your identity. No permission needed.
 
@@ -49,83 +64,86 @@ AgenticDID: Identity Built for Agents
 3️⃣ Zero-Knowledge Credentials
    Prove what's necessary. Hide everything else.
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 5: PROGRESSIVE TRUST
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 No More All-or-Nothing KYC
 
-TIER 0: No KYC Required
-→ Self-sovereign DID, browse freely
+BODY:
+TIER 0: No KYC Required → Self-sovereign DID, browse freely
 
-TIER 1: Email Verification
-→ Small purchases (<$100)
+TIER 1: Email Verification → Small purchases (<$100)
 
-TIER 2: Government ID
-→ Banking, healthcare, crypto
+TIER 2: Government ID → Banking, healthcare, crypto
 
-TIER 3: Full KYC/AML
-→ Unlimited transactions, voting
+TIER 3: Full KYC/AML → Unlimited transactions, voting
 
-TIER 4: Accredited Investor
-→ Private securities, VC deals
+TIER 4: Accredited Investor → Private securities, VC deals
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 6: HOW IT WORKS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 Agent-Mediated Identity Flow
 
-        USER (John)
-        DIDz: did:agentic:user:abc123z
-              ↓
-        COMET (AI Assistant)
-        Holds Delegated Credentials
-              ↓
-    ┌─────────┼─────────┐
-    ↓         ↓         ↓
-Banker    Shopper    Health
-Agent     Agent      Agent
-    └─────────┬─────────┘
-              ↓
-        SERVICES
-        (Verify with ZK Proofs)
+BODY:
+USER (John) → DIDz: did:agentic:user:abc123z
+        ↓
+COMET (AI Assistant) → Holds Delegated Credentials
+        ↓
+Banker Agent | Shopper Agent | Health Agent
+        ↓
+SERVICES (Verify with ZK Proofs)
 
+SPEAKER NOTES:
+Show flow diagram: User authorizes Comet, Comet delegates to task agents, services verify with zero-knowledge proofs
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 7: THE "Z" MARKER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 The "z" Marker: A Philosophy
 
+BODY:
 did:agentic:user:abc123z
                       ↑
-                      
-The "z" signifies:
 
+The "z" signifies:
 🔐 Self-Sovereign (user-controlled)
 🚫 No Permission Required
 🔒 Privacy-Preserving by Default
 
 "In a world of agents, self-sovereignty matters more than ever."
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 8: MIDNIGHT INTEGRATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 Built on Midnight Network
 
+BODY:
 ✅ Real ZK-SNARK Proofs (not simulated)
 ✅ Compact v0.26.0 Smart Contracts
 ✅ Protocol-Level Data Protection
 ✅ Production-Ready Architecture
 
 Why Midnight?
+Because when you're dealing with KYC data, financial credentials, 
+and healthcare records, "good enough" isn't good enough.
 
-Because when you're dealing with KYC data, financial 
-credentials, and healthcare records, "good enough" 
-isn't good enough.
-
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 9: ARCHITECTURE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 Production-Grade Architecture
 
+BODY:
 Frontend (React + TypeScript)
     ↓
 API Gateway (Fastify)
@@ -134,15 +152,16 @@ Agents Runtime (Google ADK + Claude)
     ↓
 Midnight Network (ZK Proofs)
 
-🐳 Docker containerized
-⚡ Cloud-ready
-🔒 Type-safe throughout
+🐳 Docker containerized  |  ⚡ Cloud-ready  |  🔒 Type-safe throughout
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 10: DEMO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 See It In Action
 
+BODY:
 🚀 LIVE DEMO
 
 Try it yourself:
@@ -152,42 +171,47 @@ Try it yourself:
 
 ⏱️ 5 minutes from clone to running
 
-🎥 Video Demo: [QR Code/Link]
+🎥 Video Demo: [Add link or QR code]
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 11: INNOVATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 What Makes This Special
 
-Architecture          Technical              UX
-────────────         ─────────             ──────
-✨ Progressive       ✨ Real ZK-SNARKs     ✨ Voice Interface
-   Trust Tiers       ✨ Compact            ✨ Task-First
-✨ Three-Axis           Contracts              Workflow
-   Issuer Model      ✨ 40+ Technical       ✨ 5-Minute
-✨ Agent-Native          Docs                   Setup
-   Design
+BODY:
+Architecture              Technical                   UX
+✨ Progressive Trust     ✨ Real ZK-SNARKs         ✨ Voice Interface
+✨ Three-Axis Issuer     ✨ Compact Contracts      ✨ Task-First Workflow
+✨ Agent-Native Design   ✨ 40+ Technical Docs     ✨ 5-Minute Setup
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 12: USE CASES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 Real-World Applications
 
-🏦 BANKING                    🛒 COMMERCE
-Agent transfers funds         Agent shops online
-ZK proof of authorization     Privacy-preserved payment
-Full AML compliance          Age verification (no DOB)
+BODY:
+🏦 BANKING                           🛒 COMMERCE
+• Agent transfers funds              • Agent shops online
+• ZK proof of authorization          • Privacy-preserved payment
+• Full AML compliance                • Age verification (no DOB)
 
-🏥 HEALTHCARE                 🗳️ GOVERNANCE
-Medical record access         Digital voting
-HIPAA compliant              Identity verified
-Emergency credentials        Eligibility proven
+🏥 HEALTHCARE                        🗳️ GOVERNANCE
+• Medical record access              • Digital voting
+• HIPAA compliant                    • Identity verified
+• Emergency credentials              • Eligibility proven
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 13: ROADMAP
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 Beyond the Hackathon
 
+BODY:
 ✅ Q4 2025 - Phase 1
    AgenticDID Protocol + AI Agent Authorization
 
@@ -200,14 +224,16 @@ Beyond the Hackathon
 → 2027+ - Phase 4
    Global Identity Network (Fi Ecosystem)
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 14: COMPETITIVE ADVANTAGE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 First-Mover Advantage
 
-"This project is the next evolution in digital 
-workflow, and the one who is first to market 
-will have a significant advantage."
+BODY:
+"This project is the next evolution in digital workflow, 
+and the one who is first to market will have a significant advantage."
 
 🎯 No other DID protocol offers:
    • Progressive trust tiers
@@ -215,14 +241,16 @@ will have a significant advantage."
    • Production-ready ZK integration
    • Self-sovereignty + compliance
 
-⏰ The future is agentic.
-   AgenticDID is ready NOW.
+⏰ The future is agentic. AgenticDID is ready NOW.
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 15: TEAM
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 Built by EnterpriseZK Labs
 
+BODY:
 John Santi
 CEO, EnterpriseZK Labs LLC
 
@@ -231,41 +259,42 @@ CEO, EnterpriseZK Labs LLC
 ⚡ Production-grade architecture
 🤖 Built with AI assistance (Cassie)
 
-Contact:
-johnny5i@proton.me
-enterprisezk.com | didz.io
+Contact: johnny5i@proton.me
+Web: enterprisezk.com | didz.io
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 16: CALL TO ACTION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 The Identity Layer for the Agentic Age
 
+BODY:
 AgenticDID isn't just a hackathon project.
+It's the foundation for how identity will work in the age of AI agents.
 
-It's the foundation for how identity will work
-in the age of AI agents.
-
-✨ Self-Sovereign
-✨ Privacy-Preserving  
-✨ Compliant
-✨ Agent-Native
+✨ Self-Sovereign        ✨ Privacy-Preserving
+✨ Compliant             ✨ Agent-Native
 ✨ Production-Ready
 
 Built with 🔮 on Midnight Network
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SLIDE 17: THANK YOU
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TITLE:
 Thank You
 
+BODY:
 Questions?
 
 John Santi | EnterpriseZK Labs
 johnny5i@proton.me
 
-GitHub: [repo link]
-Live Demo: [deployment link]
-Video: [30-second pitch link]
+🔗 GitHub: [add your repo link]
+🚀 Live Demo: [add deployment link]
+🎥 Video: [add 30-second pitch link]
 
 ═══════════════════════════════════════════════════════════════
  END OF SLIDES - 17 TOTAL
