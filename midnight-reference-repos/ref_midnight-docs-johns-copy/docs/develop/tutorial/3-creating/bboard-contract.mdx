@@ -1,0 +1,228 @@
+---
+sidebar_label: "Bulletin board contract"
+---
+
+# Bulletin board contract
+
+The [`example-bboard`](https://github.com/midnightntwrk/example-bboard) repository contains separate subdirectories for the contract and user interaction code, similar to the counter DApp. The bulletin board DApp demonstrates an additional separation between user interface code and the underlying application logic. This separation enables both command-line and web-based versions of the application.
+
+Directory structure:
+- `contract` - Contains the Compact source for the bulletin board contract and associated TypeScript
+- `api` - Contains TypeScript source implementing core DApp behavior (posting messages, taking them down), depends on `contract` code
+- `bboard-cli` - Contains the command-line interface for the text-based DApp, depends on both `contract` and `api` code
+
+:::tip
+View and edit the contract using the [Visual Studio Code extension for Compact](/docs/develop/tutorial/2-building/index.mdx#optional-visual-studio-code-vscode-extension-for-compact) for syntax highlighting and auto-completion.
+:::
+
+## Contract design components
+
+Creating a Midnight contract for the bulletin board requires identifying:
+
+- The components of the contract's public state
+- The visible operations that can be performed on the contract
+- The private data and operations, used by visible operations in provably valid ways but not shared publicly
+
+The public state and transaction history appear on the Midnight blockchain ledger for anyone to verify. Private data remains on the DApp user's computer.
+
+## Public ledger state on the blockchain
+
+The bulletin board's public ledger state consists of the following values:
+
+- A state: vacant or occupied
+- A message
+- A counter identifying the current post
+- A public token produced by the post author, from which their private identity cannot be derived
+
+The counter corresponds to the "that message" constraint mentioned previously. When its value is 15, it indicates "The current message is the 15th post." The counter increments when the board becomes vacant (not when occupied), marking the point when the board no longer holds the previous numbered post.
+
+The public token is a non-reversible hash of the owner's identity and posting sequence number. While no one can determine the poster's identity from the token, the post author can reliably derive that token again for identity verification.
+
+The ledger state specification in Midnight's Compact contract language:
+
+```compact
+import CompactStandardLibrary as std;
+
+export enum STATE {
+  VACANT,
+  OCCUPIED,
+}
+
+export ledger bboard {
+  // Board's current vacant or occupied state
+  state: STATE;
+  // Counter tracking the message's sequence number on the board
+  counter: std.Counter<Unsigned>;
+  // The message currently displayed on board
+  message: Opaque;
+  // Who owns the current message on the board
+  owner: std.Maybe<Bytes<32>>;
+  
+  constructor() {
+    state = STATE.VACANT;
+  }
+}
+```
+
+Type system notes:
+
+- Compact supports declaring new types, such as the enumeration type encoding the board's vacant or occupied state. The `export` modifier enables the Compact compiler to generate TypeScript representations for the enumeration type and its values.
+- Ledger fields with Compact types (`STATE`, `Maybe`, and `Bytes`) represent mutable cells in the ledger, updatable by circuits.
+- The ledger's `Counter` type (automatically initialized to zero) can be incremented by circuits.
+- The builtin `Opaque` type describes values whose internal structure is irrelevant to the contract.
+- The standard library's `Maybe` type describes values that may be absent, created using `some` or `none` constructors.
+- Owner identity tokens are 256-bit hashes occupying 32 bytes.
+- The standard library `CompactStandardLibrary` contains `Maybe`, `some`, `none`, and `Counter` (`Opaque` and `Bytes` are builtin types).
+
+The contract doesn't explicitly initialize the `owner` field during ledger construction because its value isn't meaningful yet. Uninitialized ledger fields receive the default value of their type if one exists.
+
+
+## Enforce the contract with circuits
+
+Users must prove they satisfied contract rules when making bulletin board changes. They submit proofs of rule compliance that observers can quickly verify. These proofs, verifiable without access to the enabling data, are called zero-knowledge proofs and are implemented using mathematical circuits.
+
+Zero-knowledge proof concepts date to the 1980s. Recent developments advance automatic proof generation and verification without human intervention, combined with public blockchains.
+
+Midnight's unique contribution makes zero-knowledge-based smart contracts and supporting circuits accessible to general programmers.
+
+The `post` operation as a Compact `circuit` definition enforces the bulletin board's first rule: posting occurs only when the board is vacant.
+
+```compact
+export circuit post(message: Opaque): Void {
+  assert(ledger.state == STATE.VACANT, "can post only to a vacant board");
+  ledger.state = STATE.OCCUPIED;
+  ledger.message = message;
+  ledger.owner = std.some(disclose(publicKey(ledger.counter.value, localSecretKey())));
+}
+```
+
+A `circuit` definition resembles a function definition with input parameters and a return value. The current ledger state is implicitly available. The `export` modifier enables calling the `post` circuit from TypeScript.
+
+The `assert` statement establishes enforced contractual obligations by checking Boolean expressions. False expressions abort the transaction with the specified failure message. This `assert` checks for a vacant board before posting (rule 1).
+
+The generated "public key" written to the ledger's `owner` field derives from hashing a string containing the post sequence number and the user's secret key (not transmitted over the network). The code calls a helper circuit `publicKey`:
+
+```compact
+export circuit publicKey(counter: Unsigned, secretKey: Bytes<32>): Bytes<32> {
+  return std.persistentHash("" + counter, secretKey);
+}
+```
+
+Implementation notes:
+
+- The `persistentHash` function comes from Compact's standard library.
+- Helper circuits typically aren't exported since TypeScript doesn't need to call them. Here, `publicKey` is exported for debugging value logging in the DApp.
+- Despite the name `publicKey`, the return value isn't truly one side of a public key cryptography key pair. Zero-knowledge circuits generalize public key cryptography concepts. The result serves the same role as a public key, hence the evocative naming.
+
+
+## Access private state
+
+Retrieving the secret key needed by the `post` circuit requires a special function type. The function `localSecretKey` cannot be another circuit because circuit return values are publicly verifiable, and this value must never appear in the ledger.
+
+This function type is called a *witness*. Witness functions provide the API to the contract's private state maintained by individual DApps. The contract declares the witness's existence; the DApp implements it.
+
+Declaration in the contract:
+
+```compact
+witness localSecretKey(): Bytes<32>;
+```
+
+Witness return values are presumed private. The Compact compiler tracks them through the program and prevents public ledger state leakage. In the `post` circuit, `localSecretKey()` results are presumed private. This value passed to `publicKey` makes that result also presumed private. The compiler signals errors if written to public ledger state. However, hashing the owner's identity with the sequence counter won't leak identity. Wrapping the public key value in `disclose` indicates intended disclosure.
+
+The `takeDown` circuit enforces the rule that only the current post owner can remove it. The circuit also checks that the board isn't already vacant:
+
+```compact
+export circuit takeDown(): Opaque {
+  assert(ledger.state == STATE.OCCUPIED, "can take down only from an occupied board");
+  ledger.state = STATE.VACANT;
+  ledger.counter.increment();
+  let thisOwner = ledger.owner.unwrap();
+  assert(publicKey(ledger.counter.value - 1u, localSecretKey()) == thisOwner,
+    "only the owner can take down the current post");
+  ledger.owner = std.none();
+  return ledger.message;
+}
+```
+
+This circuit returns the removed message, demonstrating that public circuits can return values.
+
+DApp `takeDown` transaction submissions to Midnight don't include private data for other participants to check the second `assert`. The Compact compiler doesn't require explicit `disclose` for `publicKey` here. The transaction includes verifiable proof of each `assert` check. The compiler generates all necessary material behind the scenes without requiring explicit proof generation and transmission code.
+
+
+## Compile the contract
+
+Complete contract:
+
+```compact
+import CompactStandardLibrary as std;
+
+export enum STATE {
+  VACANT,
+  OCCUPIED,
+}
+
+export ledger bboard {
+  state: STATE;
+  counter: std.Counter<Unsigned>;
+  message: Opaque;
+  owner: std.Maybe<Bytes<32>>;
+  
+  constructor() {
+    state = STATE.VACANT;
+  }
+}
+
+witness localSecretKey(): Bytes<32>;
+
+export circuit post(message: Opaque): Void {
+  assert(ledger.state == STATE.VACANT, "can post only to a vacant board");
+  ledger.state = STATE.OCCUPIED;
+  ledger.message = message;
+  ledger.owner = std.some(disclose(publicKey(ledger.counter.value, localSecretKey())));
+}
+
+export circuit takeDown(): Opaque {
+  assert(ledger.state == STATE.OCCUPIED, "can take down only from an occupied board");
+  ledger.state = STATE.VACANT;
+  ledger.counter.increment();
+  let thisOwner = ledger.owner.unwrap();
+  assert(publicKey(ledger.counter.value - 1u, localSecretKey()) == thisOwner,
+    "only the owner can take down the current post");
+  ledger.owner = std.none();
+  return ledger.message;
+}
+
+export circuit publicKey(counter: Unsigned, secretKey: Bytes<32>): Bytes<32> {
+  return std.persistentHash("" + counter, secretKey);
+}
+```
+
+### Install and use the Compact compiler
+
+Install the Compact developer tools:
+
+```shell
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/midnightntwrk/compact/releases/latest/download/compact-installer.sh | sh
+```
+
+This command downloads and runs an installation script. Follow the instructions to add the binary directory to your `PATH` environment variable.
+
+After adding to `PATH`, update to the latest toolchain:
+
+```shell
+compact update
+```
+
+### Compile the contract
+
+The `contract` subdirectory contains a build script for compilation, but manual compilation provides instructional value.
+
+Navigate to the `contract` directory and compile `bboard.compact`:
+
+```shell
+compact compile src/bboard.compact src/managed/bboard
+```
+
+The compiler displays circuit complexity messages for each public circuit (`post`, `takeDown`, and `publicKey`). Error messages indicate code mistakes requiring correction. Contact the Midnight Developer Relations team or fellow developers on Discord for assistance.
+
+The generated TypeScript API appears in `src/managed/bboard/contract/index.d.cts`. The DApp uses this API for contract deployment and circuit calls.

@@ -1,0 +1,51 @@
+# name: Preview Deploy
+
+on:
+  - pull_request
+
+env:
+  NEXT_TELEMETRY_DISABLED: 1
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  ALGOLIA_APP_ID: ${{secrets.ALGOLIA_APP_ID}}
+  ALGOLIA_INDEX_NAME: ${{secrets.ALGOLIA_INDEX_NAME}}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # 5.0.0
+        with:
+          fetch-depth: 2
+      - name: Setup Node.js
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # 5.0.0
+        with:
+          node-version: 22
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Install Vercel CLI
+        run: npm install --global vercel@canary
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }}
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }}
+      - name: Deploy Project Artifacts to Vercel
+        run: |
+          DEPLOYMENT_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }})
+          echo "Deployment URL: $DEPLOYMENT_URL"
+          vercel alias set $DEPLOYMENT_URL pr-${{ github.event.number }}-midnight-docs.vercel.app --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }}
+
+  run-LHCI-workflow:
+    needs: [deploy-preview]
+    uses: ./.github/workflows/light-house-ci.yml
+    secrets: inherit
+
+  run-PWCI-workflow:
+    needs: [deploy-preview]
+    uses: ./.github/workflows/playwright-visual-regression.yml
+    secrets: inherit

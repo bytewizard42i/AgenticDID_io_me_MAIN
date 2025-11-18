@@ -1,0 +1,59 @@
+name: CI checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    if: github.event.pull_request.draft == false
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  #v5.0.0
+      - uses: actions-rust-lang/setup-rust-toolchain@1780873c7b576612439a134613cc4cc74ce5538c
+        with:
+          toolchain: nightly
+          override: false
+      - name: Run tests
+        uses: actions-rs/cargo@844f36862e911db73fe0815f00a4a2602c279505
+        with:
+          command: test
+          args: --release --all --all-features
+
+  fmt:
+    if: github.event.pull_request.draft == false
+    name: Rustfmt
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  #v5.0.0
+      - uses: actions-rust-lang/setup-rust-toolchain@1780873c7b576612439a134613cc4cc74ce5538c
+        with:
+          toolchain: nightly
+          override: false
+      - run: rustup component add rustfmt --toolchain nightly
+      - uses: actions-rs/cargo@844f36862e911db73fe0815f00a4a2602c279505
+        with:
+          toolchain: nightly
+          command: fmt
+          args: --all -- --check
+
+  clippy:
+    if: github.event.pull_request.draft == false
+    name: Clippy
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  #v5.0.0
+      - uses: actions-rust-lang/setup-rust-toolchain@1780873c7b576612439a134613cc4cc74ce5538c
+        with:
+          toolchain: 1.84
+          components: clippy
+      - name: Run Clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings

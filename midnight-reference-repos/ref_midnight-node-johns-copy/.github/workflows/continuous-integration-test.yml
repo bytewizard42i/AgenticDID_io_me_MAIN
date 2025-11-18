@@ -1,0 +1,52 @@
+name: +test
+
+on:
+  pull_request:
+    branches: ["**"]
+  push:
+    branches: ["main"]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+jobs:
+  run:
+    name: Run tests
+    # 16 core machines seem to have gone walkabout.
+    runs-on: ubuntu-latest-16-core-x64
+    env:
+      FORCE_COLOR: 1
+    steps:
+      - uses: EarthBuild/actions-setup@cae2d9ab68894d8402751fe42e07c7cca0272f7f
+        with:
+          version: v0.8.16
+          github-token: ${{ github.token }}
+          use-cache: false
+
+      - name: Checkout node repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 #v5.0.0
+
+      - name: Login to GHCR
+        uses: docker/login-action@5e57cd118135c172c3672efd75eb46360885c0ef  #v3.6.0
+
+        with:
+          registry: ghcr.io
+          username: MidnightCI
+          password: ${{ secrets.MIDNIGHTCI_PACKAGES_WRITE }}
+
+      - name: Run build
+        run: |
+          . ./.envrc && earthly --secret GITHUB_TOKEN="${{ secrets.MIDNIGHTCI_PACKAGES_READ }}" --strict +test
+
+      - name: Upload test report artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: success() || failure()
+        with:
+          name: Test Report
+          path: test-artifacts/html
+
+      - name: Upload lcov test report artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: success() || failure()
+        with:
+          name: Lcov Coverage Report
+          path: test-artifacts/tests.lcov

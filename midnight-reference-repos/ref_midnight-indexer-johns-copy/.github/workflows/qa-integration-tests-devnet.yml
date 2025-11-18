@@ -1,0 +1,20 @@
+name: Indexer QA Integration Tests - devnet
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish_to_xray:
+        type: boolean
+        description: Publish the test results to Xray
+        required: false
+        default: false
+
+jobs:
+  test:
+    name: Indexer QA Integration Tests on devnet
+    uses: ./.github/workflows/qa-integration-tests-base-workflow.yml
+    with:
+      target_env: devnet
+      ref: main
+      publish_to_xray: ${{ inputs.publish_to_xray }}
+    secrets: inherit
