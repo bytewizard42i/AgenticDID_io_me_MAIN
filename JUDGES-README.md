@@ -5,6 +5,54 @@
 
 ---
 
+## 🚀 **Quick Start (5 Minutes)**
+
+### **Prerequisites**
+- Docker & Docker Compose installed
+- Git
+
+### **Run the Project**
+```bash
+# 1. Clone the repository
+git clone https://github.com/bytewizard42i/AgenticDID_io_me_MAIN.git
+cd AgenticDID_io_me_MAIN/AgenticDID_io_me_REAL-DEAL
+
+# 2. Start all services (one command!)
+docker-compose up --build
+
+# 3. Access the application
+# Frontend:     http://localhost:5173
+# API Gateway:  http://localhost:8787
+# Agents:       http://localhost:3001
+# Proof Server: http://localhost:6300
+```
+
+### **Verify It's Working**
+```bash
+# Check all services are running
+docker-compose ps
+
+# Test the API
+curl http://localhost:8787/health
+
+# Test proof server
+curl http://localhost:6300/health
+```
+
+### **Optional: Environment Variables**
+Create a `.env` file for full functionality:
+```bash
+# Optional - for AI agent features
+ANTHROPIC_API_KEY=your_key_here
+
+# Optional - for production Midnight testnet
+MIDNIGHT_RPC_URL=https://testnet.midnight.network
+```
+
+**Note:** The system works in demo mode without API keys. AI agents will use mock responses.
+
+---
+
 ## 🎯 **What We Built**
 
 AgenticDID.io is a **production-ready identity protocol** that enables AI agents to act on behalf of humans in financial and commercial contexts—with **privacy, trust, and compliance** guaranteed through zero-knowledge proofs.
@@ -52,54 +100,6 @@ No all-or-nothing KYC. Users unlock capabilities as needed:
 - Real ZK-SNARK proofs (not simulated)
 - Data protection guarantees at protocol level
 - Cardano-compatible for future interoperability
-
----
-
-## 🚀 **Quick Start (5 Minutes)**
-
-### **Prerequisites**
-- Docker & Docker Compose installed
-- Git
-
-### **Run the Project**
-```bash
-# 1. Clone the repository
-git clone https://github.com/bytewizard42i/AgenticDID_io_me_MAIN.git
-cd AgenticDID_io_me_MAIN/AgenticDID_io_me_REAL-DEAL
-
-# 2. Start all services (one command!)
-docker-compose up --build
-
-# 3. Access the application
-# Frontend:     http://localhost:5173
-# API Gateway:  http://localhost:8787
-# Agents:       http://localhost:3001
-# Proof Server: http://localhost:6300
-```
-
-### **Verify It's Working**
-```bash
-# Check all services are running
-docker-compose ps
-
-# Test the API
-curl http://localhost:8787/health
-
-# Test proof server
-curl http://localhost:6300/health
-```
-
-### **Optional: Environment Variables**
-Create a `.env` file for full functionality:
-```bash
-# Optional - for AI agent features
-ANTHROPIC_API_KEY=your_key_here
-
-# Optional - for production Midnight testnet
-MIDNIGHT_RPC_URL=https://testnet.midnight.network
-```
-
-**Note:** The system works in demo mode without API keys. AI agents will use mock responses.
 
 ---
 
