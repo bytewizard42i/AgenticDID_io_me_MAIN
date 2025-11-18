@@ -53,6 +53,13 @@ MIDNIGHT_RPC_URL=https://testnet.midnight.network
 
 ---
 
+## 🎬 **Presentation Materials**
+
+- **[30-Second Pitch Video](https://drive.google.com/file/d/10boJ2hp18_vlFGWOA75AhrGV7Ltyy-fV/view?usp=drive_link)** - Quick overview of the problem, solution, and innovation
+- **Slide Deck** - [Link to be added] - Complete technical architecture and use case walkthrough
+
+---
+
 ## 🎯 **What We Built**
 
 AgenticDID.io is a **production-ready identity protocol** that enables AI agents to act on behalf of humans in financial and commercial contexts—with **privacy, trust, and compliance** guaranteed through zero-knowledge proofs.
