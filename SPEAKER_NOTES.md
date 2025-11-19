@@ -173,7 +173,9 @@ Our incredible DApp is the future of interactions between AI and humans. We want
 
 Check out Our Video Demo
 
-**LINK:** https://youtu.be/OQS3FvZOTsg?si=Gjf9B5Tp93ZXkpCN
+**VIDEO LINK:** https://youtu.be/OQS3FvZOTsg?si=Gjf9B5Tp93ZXkpCN
+
+**🚀 LIVE DEMO:** https://agenticdid-demo-237883275632.us-central1.run.app
 
 ---
 
