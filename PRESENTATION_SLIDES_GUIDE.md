@@ -1,3 +1,7 @@
+**📊 Live Presentation:** https://docs.google.com/presentation/d/1HzFIDkJw5LcVeU9CdiYUhbfv1LVUIHw53cObbpUXjGE/edit?usp=sharing
+
+---
+
 # AgenticDID.io - Google Slides Presentation Guide
 
 ---
