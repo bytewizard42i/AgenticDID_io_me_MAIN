@@ -396,3 +396,42 @@ enum IssuerType { /* ... */ }
 ---
 
 **These standards are PROTOCOL LAW. Follow them rigorously.** 🏛️
+
+---
+
+## 🔗 Related Vision Documents
+
+### **PP DIDz Ecosystem**
+
+The Fi Standards are part of a broader vision for Privacy-Preserving Digital Identity:
+
+- **[PP DIDz Vision Manifesto](./PP_DIDZ_VISION_MANIFESTO.md)** - The complete vision for hierarchical privacy wallets, the trust triangle, and adoption strategy
+- **[Oracle Standards](./ORACLE_STANDARDS.md)** - Standards for geo-location, KYC, and credential verification oracles on Midnight
+- **[DIDz.io](http://DIDz.io)** - The DApp implementation
+
+### **Key Concepts from PP DIDz Vision**
+
+1. **Hierarchical Privacy Wallet** - Folderized smart contract functionality (Google Folders model)
+2. **Credential Types**: Rescindable (Driver's License) vs Immutable (PhD)
+3. **Trust Triangle**: Trusted Issuers → DIDz DApp → Credential Holders + Biometric Verification
+4. **Progressive Disclosure**: Reveal only what you need, when you need to
+5. **Oracles**: Geo-location/KYC verification without data exposure
+
+### **Interoperability Focus**
+
+Standards designed to work with:
+- Cardano BTC DeFi Bridge (Midnight as privacy layer)
+- XRP (speed and low-cost transactions)
+- Cross-chain credential verification
+
+### **Collaboration Initiative** (January 2026)
+
+Building global scientific conversation with:
+- @OpenZeppelin, @SundaeSwap, @nmkr_io, @eddalabs_io, @BrickTowers
+- Midnight Foundation (@MidnightNtwrk, @midnightfdn)
+
+> *"One day there will just be 'Fi'."* — Charles Hoskinson
+
+---
+
+**Last Updated**: January 12, 2026
